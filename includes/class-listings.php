@@ -25,18 +25,18 @@ class AgentPress_Listings {
 		
 		$this->property_details = apply_filters( 'agentpress_property_details', array(
 			'col1' => array( 
-			    __( 'Price:', 'apl' ) => '_listing_price', 
+			    __( 'Price:', 'apl' )   => '_listing_price', 
 			    __( 'Address:', 'apl' ) => '_listing_address', 
-			    __( 'City:', 'apl' ) => '_listing_city', 
-			    __( 'State:', 'apl' ) => '_listing_state', 
-			    __( 'ZIP:', 'apl' ) => '_listing_zip' 
+			    __( 'City:', 'apl' )    => '_listing_city', 
+			    __( 'State:', 'apl' )   => '_listing_state', 
+			    __( 'ZIP:', 'apl' )     => '_listing_zip' 
 			), 
 			'col2' => array( 
-			    __( 'MLS #:', 'apl' ) => '_listing_mls', 
+			    __( 'MLS #:', 'apl' )       => '_listing_mls', 
 			    __( 'Square Feet:', 'apl' ) => '_listing_sqft', 
-			    __( 'Bedrooms:', 'apl' ) => '_listing_bedrooms', 
-			    __( 'Bathrooms:', 'apl' ) => '_listing_bathrooms', 
-			    __( 'Basement:', 'apl' ) => '_listing_basement' 
+			    __( 'Bedrooms:', 'apl' )    => '_listing_bedrooms', 
+			    __( 'Bathrooms:', 'apl' )   => '_listing_bathrooms', 
+			    __( 'Basement:', 'apl' )    => '_listing_basement' 
 			)
 		) );
 
@@ -65,26 +65,26 @@ class AgentPress_Listings {
 		$args = apply_filters( 'agentpress_listings_post_type_args',
 			array(
 				'labels' => array(
-					'name'					=> __( 'Listings', 'apl' ),
-					'singular_name'			=> __( 'Listing', 'apl' ),
-					'add_new'				=> __( 'Add New', 'apl' ),
-					'add_new_item'			=> __( 'Add New Listing', 'apl' ),
-					'edit'					=> __( 'Edit', 'apl' ),
-					'edit_item'				=> __( 'Edit Listing', 'apl' ),
-					'new_item'				=> __( 'New Listing', 'apl' ),
-					'view'					=> __( 'View Listing', 'apl' ),
-					'view_item'				=> __( 'View Listing', 'apl' ),
-					'search_items'			=> __( 'Search Listings', 'apl' ),
-					'not_found'				=> __( 'No listings found', 'apl' ),
-					'not_found_in_trash'	=> __( 'No listings found in Trash', 'apl' )
+					'name'               => __( 'Listings', 'apl' ),
+					'singular_name'      => __( 'Listing', 'apl' ),
+					'add_new'            => __( 'Add New', 'apl' ),
+					'add_new_item'       => __( 'Add New Listing', 'apl' ),
+					'edit'               => __( 'Edit', 'apl' ),
+					'edit_item'          => __( 'Edit Listing', 'apl' ),
+					'new_item'           => __( 'New Listing', 'apl' ),
+					'view'               => __( 'View Listing', 'apl' ),
+					'view_item'          => __( 'View Listing', 'apl' ),
+					'search_items'       => __( 'Search Listings', 'apl' ),
+					'not_found'          => __( 'No listings found', 'apl' ),
+					'not_found_in_trash' => __( 'No listings found in Trash', 'apl' )
 				),
-				'public'		=> true,
-				'query_var'		=> true,
-				'menu_position'	=> 6,
-				'menu_icon'		=> APL_URL . 'images/apl-icon-16x16.png',
-				'has_archive'	=> true,
-				'supports'		=> array( 'title', 'editor', 'comments', 'thumbnail', 'genesis-seo', 'genesis-layouts', 'genesis-simple-sidebars' ),
-				'rewrite'		=> array( 'slug' => 'listings' ),
+				'public'        => true,
+				'query_var'     => true,
+				'menu_position' => 6,
+				'menu_icon'     => 'dashicons-admin-home',
+				'has_archive'   => true,
+				'supports'      => array( 'title', 'editor', 'comments', 'thumbnail', 'genesis-seo', 'genesis-layouts', 'genesis-simple-sidebars' ),
+				'rewrite'       => array( 'slug' => 'listings' ),
 			)
 		);
 
@@ -143,12 +143,12 @@ class AgentPress_Listings {
 	function columns_filter ( $columns ) {
 
 		$columns = array(
-			'cb'					=> '<input type="checkbox" />',
-			'listing_thumbnail'		=> __( 'Thumbnail', 'apl' ),
-			'title'					=> __( 'Listing Title', 'apl' ),
-			'listing_details'		=> __( 'Details', 'apl' ),
-			'listing_features'		=> __( 'Features', 'apl' ),
-			'listing_categories'	=> __( 'Categories', 'apl' )
+			'cb'                 => '<input type="checkbox" />',
+			'listing_thumbnail'  => __( 'Thumbnail', 'apl' ),
+			'title'              => __( 'Listing Title', 'apl' ),
+			'listing_details'    => __( 'Details', 'apl' ),
+			'listing_features'   => __( 'Features', 'apl' ),
+			'listing_categories' => __( 'Categories', 'apl' )
 		);
 
 		return $columns;
@@ -220,12 +220,6 @@ class AgentPress_Listings {
 	function property_video_shortcode( $atts ) {
 
 		return genesis_get_custom_field( '_listing_video' );
-
-	}
-
-	function admin_style() {
-
-		printf( '<style type="text/css" media="screen">.icon32-posts-listing { background: transparent url(%s) no-repeat !important; }</style>', APL_URL . 'images/apl-icon-32x32.png' );
 
 	}
 

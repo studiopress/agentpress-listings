@@ -1,15 +1,15 @@
 === Plugin Name ===
 Contributors: nathanrice, wpmuguru, studiopress
 Tags: real estate, agentpress, genesis, genesiswp
-Requires at least: 3.2
-Tested up to: 3.8
-Stable tag: 1.0.0
+Requires at least: 3.8
+Tested up to: 3.8.1
+Stable tag: 1.1.0
 
-This plugin creates a listings management system for AgentPress child themes, from StudioPress.
+This plugin adds a Listings custom post type for Real Estate agents.
 
 == Description ==
 
-The AgentPress Listings plugin uses custom post types, custom taxonomies, and widgets to create a listings management system for AgentPress child themes.
+The AgentPress Listings plugin uses custom post types, custom taxonomies, and widgets to create a listings management system.
 
 You can use the taxonomy creation tool to create your own way of classifying listings, and use those taxonomies to allow users to search for listings.
 
@@ -51,3 +51,7 @@ No, but that doesn't necessarily mean it's perfect. Please report any bugs to us
 * Enable comments on listings post type
 * Fix admin redirect bug
 * Tag for public release
+
+= 1.1.0 =
+* Fix spacing issues
+* Update Listings menu icon

@@ -18,8 +18,8 @@ class AgentPress_Featured_Listings_Widget extends WP_Widget {
 	
 		/** defaults */
 		$instance = wp_parse_args( $instance, array(
-			'title' 			=> '',
-			'posts_per_page'	=> 10
+			'title'          => '',
+			'posts_per_page' => 10
 		) );
 	
 		extract( $args );
@@ -33,9 +33,9 @@ class AgentPress_Featured_Listings_Widget extends WP_Widget {
 			$toggle = ''; /** for left/right class */
 			
 			$query_args = array(
-				'post_type'			=> 'listing',
-				'posts_per_page'	=> $instance['posts_per_page'],
-				'paged'				=> get_query_var('paged') ? get_query_var('paged') : 1
+				'post_type'      => 'listing',
+				'posts_per_page' => $instance['posts_per_page'],
+				'paged'          => get_query_var('paged') ? get_query_var('paged') : 1
 			);
 			
 			query_posts( $query_args );
@@ -73,8 +73,8 @@ class AgentPress_Featured_Listings_Widget extends WP_Widget {
 	function form( $instance ) {
 		
 		$instance = wp_parse_args( $instance, array(
-			'title'				=> '',
-			'posts_per_page'	=> 10
+			'title'          => '',
+			'posts_per_page' => 10
 		) );
 			
 		printf( '<p><label for="%s">%s</label><input type="text" id="%s" name="%s" value="%s" style="%s" /></p>', $this->get_field_id('title'), __( 'Title:', 'apl' ), $this->get_field_id('title'), $this->get_field_name('title'), esc_attr( $instance['title'] ), 'width: 95%;' );

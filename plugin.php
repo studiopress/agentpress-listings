@@ -2,11 +2,11 @@
 /*
 	Plugin Name: AgentPress Listings
 	Plugin URI: http://www.studiopress.com/
-	Description: AgentPress Listings is a plugin for the AgentPress theme which adds a manual Listings component for Real Estate agents.
+	Description: AgentPress Listings is a plugin which adds a Listings custom post type for Real Estate agents.
 	Author: StudioPress
 	Author URI: http://www.studiopress.com/
 
-	Version: 1.0.0
+	Version: 1.1.0
 
 	License: GNU General Public License v2.0 (or later)
 	License URI: http://www.opensource.org/licenses/gpl-license.php
@@ -27,7 +27,7 @@ function agentpress_listings_activation() {
 
 		if ( 'genesis' != basename( TEMPLATEPATH ) ) {
 	        deactivate_plugins( plugin_basename( __FILE__ ) ); /** Deactivate ourself */
-			wp_die( sprintf( __( 'Sorry, you can\'t activate unless you have installed <a href="%s">Genesis</a>', 'apl' ), 'http://www.studiopress.com/themes/genesis' ) );
+			wp_die( sprintf( __( 'Sorry, you can\'t activate unless you have installed <a href="%s">Genesis</a>', 'apl' ), 'http://my.studiopress.com/themes/genesis/' ) );
 		}
 
 		if ( version_compare( $theme_info['Version'], $latest, '<' ) ) {

@@ -17,8 +17,8 @@ class AgentPress_Listings_Search_Widget extends WP_Widget {
 	function widget( $args, $instance ) {
 		
 		$instance = wp_parse_args( (array) $instance, array(
-			'title'			=> '',
-			'button_text'	=> __( 'Search Properties', 'apl' )
+			'title'       => '',
+			'button_text' => __( 'Search Properties', 'apl' )
 		) );
 
 		global $_agentpress_taxonomies;
@@ -65,8 +65,8 @@ class AgentPress_Listings_Search_Widget extends WP_Widget {
 	function form( $instance ) {
 		
 		$instance = wp_parse_args( (array) $instance, array(
-			'title'			=> '',
-			'button_text'	=> __( 'Search Properties', 'apl' )
+			'title'       => '',
+			'button_text' => __( 'Search Properties', 'apl' )
 		) );
 
 		global $_agentpress_taxonomies;
