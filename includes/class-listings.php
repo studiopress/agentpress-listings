@@ -43,28 +43,29 @@ class AgentPress_Listings {
 		$args = apply_filters( 'agentpress_listings_post_type_args',
 			array(
 				'labels' => array(
-					'name' => __( 'Listings', 'apl' ),
-					'singular_name' => __( 'Listing', 'apl' ),
-					'add_new' => __( 'Add New', 'apl' ),
-					'add_new_item' => __( 'Add New Listing', 'apl' ),
-					'edit' => __( 'Edit', 'apl' ),
-					'edit_item' => __( 'Edit Listing', 'apl' ),
-					'new_item' => __( 'New Listing', 'apl' ),
-					'view' => __( 'View Listing', 'apl' ),
-					'view_item' => __( 'View Listing', 'apl' ),
-					'search_items' => __( 'Search Listings', 'apl' ),
-					'not_found' => __( 'No listings found', 'apl' ),
-					'not_found_in_trash' => __( 'No listings found in Trash', 'apl' )
+					'name'					=> __( 'Listings', 'apl' ),
+					'singular_name'			=> __( 'Listing', 'apl' ),
+					'add_new'				=> __( 'Add New', 'apl' ),
+					'add_new_item'			=> __( 'Add New Listing', 'apl' ),
+					'edit'					=> __( 'Edit', 'apl' ),
+					'edit_item'				=> __( 'Edit Listing', 'apl' ),
+					'new_item'				=> __( 'New Listing', 'apl' ),
+					'view'					=> __( 'View Listing', 'apl' ),
+					'view_item'				=> __( 'View Listing', 'apl' ),
+					'search_items'			=> __( 'Search Listings', 'apl' ),
+					'not_found'				=> __( 'No listings found', 'apl' ),
+					'not_found_in_trash'	=> __( 'No listings found in Trash', 'apl' )
 				),
-				'public' => true,
-				'query_var' => true,
-				'menu_position' => 6,
-				'menu_icon' => APL_URL . 'images/apl-icon-16x16.png',
-				'has_archive' => true,
-				'supports' => array( 'title', 'editor', 'thumbnail', 'genesis-seo', 'genesis-layouts', 'genesis-simple-sidebars' ),
-				'rewrite' => array( 'slug' => 'listings' ),
+				'public'		=> true,
+				'query_var'		=> true,
+				'menu_position'	=> 6,
+				'menu_icon'		=> APL_URL . 'images/apl-icon-16x16.png',
+				'has_archive'	=> true,
+				'supports'		=> array( 'title', 'editor', 'thumbnail', 'genesis-seo', 'genesis-layouts', 'genesis-simple-sidebars' ),
+				'rewrite'		=> array( 'slug' => 'listings' ),
 			)
 		);
+
 		register_post_type( 'listing', $args );
 
 	}
@@ -74,7 +75,7 @@ class AgentPress_Listings {
 		add_meta_box( 'listing_details_metabox', __( 'Property Details', 'apl' ), array( &$this, 'listing_details_metabox' ), 'listing', 'normal', 'high' );
 
 	}
-	
+
 	function listing_details_metabox() {
 		include( dirname( __FILE__ ) . '/views/listing-details-metabox.php' );
 	}
@@ -120,12 +121,12 @@ class AgentPress_Listings {
 	function columns_filter ( $columns ) {
 
 		$columns = array(
-			'cb' => '<input type="checkbox" />',
-			'listing_thumbnail' => __( 'Thumbnail', 'apl' ),
-			'title' => __( 'Listing Title', 'apl' ),
-			'listing_details' => __( 'Details', 'apl' ),
-			'listing_features' => __( 'Features', 'apl' ),
-			'listing_categories' => __( 'Categories', 'apl' )
+			'cb'					=> '<input type="checkbox" />',
+			'listing_thumbnail'		=> __( 'Thumbnail', 'apl' ),
+			'title'					=> __( 'Listing Title', 'apl' ),
+			'listing_details'		=> __( 'Details', 'apl' ),
+			'listing_features'		=> __( 'Features', 'apl' ),
+			'listing_categories'	=> __( 'Categories', 'apl' )
 		);
 
 		return $columns;
@@ -172,7 +173,7 @@ class AgentPress_Listings {
 		global $post;
 
 		$output = '';
-		
+
 		$output .= '<div class="property-details">';
 
 		$output .= '<div class="property-details-col1">';
@@ -189,7 +190,7 @@ class AgentPress_Listings {
 			$output .= sprintf( '<b>%s</b> %s<br />', __( 'Basement:', 'apl' ), esc_html( get_post_meta($post->ID, '_listing_basement', true) ) );
 		$output .= '</div><div class="clear">';
 			$output .= sprintf( '<p><b>%s</b><br /> %s</p></div>', __( 'Additional Features:', 'apl' ), get_the_term_list( $post->ID, 'features', '', ', ', '' ) );
-			
+
 		$output .= '</div>';
 
 		return $output;

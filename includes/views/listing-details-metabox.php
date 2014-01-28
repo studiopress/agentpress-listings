@@ -18,7 +18,7 @@ echo '<div style="width: 45%; float: left">';
 	printf( $pattern, __( 'State:', 'apl' ), '_listing_state', esc_attr( genesis_get_custom_field('_listing_state') ) );
 	printf( $pattern, __( 'ZIP:', 'apl' ), '_listing_zip', esc_attr( genesis_get_custom_field('_listing_zip') ) );
 	printf( '<p><a class="button" href="%s" onclick="%s">%s</a></p>', '#', 'ap_send_to_editor(\'[property_details]\')', __( 'Send to text editor', 'apl' ) );
-	
+
 echo '</div>';
 
 echo '<div style="width: 45%; float: left;">';
@@ -32,17 +32,17 @@ echo '<div style="width: 45%; float: left;">';
 echo '</div><br style="clear: both;" /><br /><br />';
 
 echo '<div style="width: 45%; float: left;">';
-	
+
 	printf( __( '<p><label>Enter Map Embed Code:<br /><textarea name="ap[_listing_map]" rows="5" cols="18" style="%s">%s</textarea></label></p>', 'apl' ), 'width: 99%;', htmlentities( genesis_get_custom_field('_listing_map') ) );
-	
+
 	printf( '<p><a class="button" href="%s" onclick="%s">%s</a></p>', '#', 'ap_send_to_editor(\'[property_map]\')', __( 'Send to text editor', 'apl' ) );
 
 echo '</div>';
 
 echo '<div style="width: 45%; float: left;">';
-	
+
 	printf( __( '<p><label>Enter Video Embed Code:<br /><textarea name="ap[_listing_video]" rows="5" cols="18" style="%s">%s</textarea></label></p>', 'apl' ), 'width: 99%;', htmlentities( genesis_get_custom_field('_listing_video') ) );
-	
+
 	printf( '<p><a class="button" href="%s" onclick="%s">%s</a></p>', '#', 'ap_send_to_editor(\'[property_video]\')', __( 'Send to text editor', 'apl' ) );
 
 echo '</div><br style="clear: both;" />';

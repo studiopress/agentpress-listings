@@ -7,31 +7,31 @@ if ( array_key_exists( $_REQUEST['id'], (array) $options ) ) {
 	wp_die( __( "Nice try, partner. But that taxonomy doesn't exist or can't be edited. Click back and try again.", 'apl' ) );
 }
 ?>
-	
+
 <?php screen_icon( 'plugins' ); ?>
 <h2><?php _e( 'Edit Taxonomy', 'apl' ); ?></h2>
 
 <form method="post" action="<?php echo admin_url( 'admin.php?page=' . $this->menu_page . '&amp;action=edit' ); ?>">
 <?php wp_nonce_field( 'agentpress-action_edit-taxonomy' ); ?>
 <table class="form-table">
-	
-	<tr class="form-field"> 
-		<th scope="row" valign="top"><label for="agentpress_taxonomy[id]"><?php _e( 'ID', 'apl' ); ?></label></th> 
+
+	<tr class="form-field">
+		<th scope="row" valign="top"><label for="agentpress_taxonomy[id]"><?php _e( 'ID', 'apl' ); ?></label></th>
 		<td>
 		<input type="text" value="<?php echo esc_html( $_REQUEST['id'] ); ?>" size="40" disabled="disabled" />
-		<input name="agentpress_taxonomy[id]" id="agentpress_taxonomy[id]" type="hidden" value="<?php echo esc_html( $_REQUEST['id'] ); ?>" size="40" /> 
-		<p class="description"><?php _e( 'The unique ID is used to register the taxonomy. (cannot be changed)', 'apl' ); ?></p></td> 
+		<input name="agentpress_taxonomy[id]" id="agentpress_taxonomy[id]" type="hidden" value="<?php echo esc_html( $_REQUEST['id'] ); ?>" size="40" />
+		<p class="description"><?php _e( 'The unique ID is used to register the taxonomy. (cannot be changed)', 'apl' ); ?></p></td>
 	</tr>
 
-	<tr class="form-field"> 
-		<th scope="row" valign="top"><label for="agentpress_taxonomy[name]"><?php _e( 'Plural Name', 'apl' ); ?></label></th> 
-		<td><input name="agentpress_taxonomy[name]" id="agentpress_taxonomy[name]" type="text" value="<?php echo esc_html( $taxonomy['labels']['name'] ); ?>" size="40" /> 
+	<tr class="form-field">
+		<th scope="row" valign="top"><label for="agentpress_taxonomy[name]"><?php _e( 'Plural Name', 'apl' ); ?></label></th>
+		<td><input name="agentpress_taxonomy[name]" id="agentpress_taxonomy[name]" type="text" value="<?php echo esc_html( $taxonomy['labels']['name'] ); ?>" size="40" />
 		<p class="description"><?php _e( 'Example: "Property Types" or "Locations"', 'apl' ); ?></p></td>
 	</tr>
 
-	<tr class="form-field"> 
-		<th scope="row" valign="top"><label for="agentpress_taxonomy[singular_name]"><?php _e( 'Singular Name', 'apl' ); ?></label></th> 
-		<td><input name="agentpress_taxonomy[singular_name]" id="agentpress_taxonomy[singular_name]" type="text" value="<?php echo esc_html( $taxonomy['labels']['singular_name'] ); ?>" size="40" /> 
+	<tr class="form-field">
+		<th scope="row" valign="top"><label for="agentpress_taxonomy[singular_name]"><?php _e( 'Singular Name', 'apl' ); ?></label></th>
+		<td><input name="agentpress_taxonomy[singular_name]" id="agentpress_taxonomy[singular_name]" type="text" value="<?php echo esc_html( $taxonomy['labels']['singular_name'] ); ?>" size="40" />
 		<p class="description"><?php _e( 'Example: "Property Type" or "Location"', 'apl' ); ?></p></td>
 	</tr>
 

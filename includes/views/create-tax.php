@@ -5,7 +5,7 @@
 
 	<div id="col-right">
 	<div class="col-wrap">
-		
+
 		<?php #print_r( get_option( $this->settings_field ) ); ?>
 
 		<h3><?php _e( 'Current Listing Taxonomies', 'apl' ); ?></h3>
@@ -30,15 +30,15 @@
 
 				<?php
 				$alt = true;
-				
+
 				$listing_taxonomies = array_merge( $this->property_features_taxonomy(), get_option( $this->settings_field ) );
-				
+
 				foreach ( (array) $listing_taxonomies as $id => $data ) :
 				?>
 
 				<tr <?php if ( $alt ) { echo 'class="alternate"'; $alt = false; } else { $alt = true; } ?>>
 					<td class="slug column-slug">
-						
+
 					<?php if ( isset( $data['editable'] ) && 0 === $data['editable'] ) : ?>
 						<?php echo '<strong>' . esc_html( $id ) . '</strong><br /><br />'; ?>
 					<?php else : ?>

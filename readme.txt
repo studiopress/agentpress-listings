@@ -3,7 +3,7 @@ Contributors: nathanrice, wpmuguru, studiopress
 Tags: real estate, agentpress, genesis, genesiswp
 Requires at least: 3.2
 Tested up to: 3.2.1
-Stable tag: 0.1.0
+Stable tag: 0.9.0
 
 This plugin plugin creates a listings management system for AgentPress child themes, from StudioPress.
 
@@ -29,3 +29,6 @@ Yes. The AgentPress Listings plugin is still under active development. Expect pe
 
 = 0.1.0 =
 * Initial beta release
+
+= 0.9.0 =
+* Public beta release
