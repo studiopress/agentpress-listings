@@ -6,7 +6,7 @@
 	Author: StudioPress
 	Author URI: http://www.studiopress.com/
 
-	Version: 0.9.1
+	Version: 1.0.0
 
 	License: GNU General Public License v2.0 (or later)
 	License URI: http://www.opensource.org/licenses/gpl-license.php
@@ -63,12 +63,13 @@ function agentpress_listings_init() {
 	global $_agentpress_listings, $_agentpress_taxonomies;
 
 	define( 'APL_URL', plugin_dir_url( __FILE__ ) );
-	define( 'APL_VERSION', '0.9.0' );
+	define( 'APL_VERSION', '1.0.0' );
 
 	/** Load textdomain for translation */
 	load_plugin_textdomain( 'apl', false, basename( dirname( __FILE__ ) ) . '/languages/' );
 
 	/** Includes */
+	require_once( dirname( __FILE__ ) . '/includes/functions.php' );
 	require_once( dirname( __FILE__ ) . '/includes/class-listings.php' );
 	require_once( dirname( __FILE__ ) . '/includes/class-taxonomies.php' );
 	require_once( dirname( __FILE__ ) . '/includes/class-featured-listings-widget.php' );
