@@ -12,11 +12,34 @@ class AgentPress_Listings {
 
 	var $settings_field = 'agentpress_taxonomies';
 	var $menu_page = 'register-taxonomies';
+	
+	/**
+	 * Property details array.
+	 *
+	 */
+	var $property_details;
 
 	/**
 	 * Construct Method.
 	 */
 	function __construct() {
+		
+		$this->property_details = apply_filters( 'agentpress_listing_details', array(
+			'col1' => array(
+				'Price:' => '_listing_price',
+				'Address:' => '_listing_address',
+				'City:' => '_listing_city',
+				'State:' => '_listing_state',
+				'ZIP:' => '_listing_zip'
+			),
+			'col2' => array(
+				'MLS #:' => '_listing_mls',
+				'Square Feed:' => '_listing_sqft',
+				'Bedrooms:' => '_listing_bedrooms',
+				'Bathrooms:' => '_listing_bathrooms',
+				'Basement:' => '_listing_basement'
+			)
+		) );
 
 		add_action( 'init', array( $this, 'create_post_type' ) );
 
@@ -145,16 +168,12 @@ class AgentPress_Listings {
 				printf( '<p>%s</p>', genesis_get_image( array( 'size' => 'thumbnail' ) ) );
 				break;
 			case "listing_details":
-				printf( '<b>%s</b> %s<br />', __( 'Price:', 'apl' ), esc_html( get_post_meta($post->ID, '_listing_price', true) ) );
-				printf( '<b>%s</b> %s<br />', __( 'Address:', 'apl' ), esc_html( get_post_meta($post->ID, '_listing_address', true) ) );
-				printf( '<b>%s</b> %s<br />', __( 'City:', 'apl' ), esc_html( get_post_meta($post->ID, '_listing_city', true) ) );
-				printf( '<b>%s</b> %s<br />', __( 'State:', 'apl' ), esc_html( get_post_meta($post->ID, '_listing_state', true) ) );
-				printf( '<b>%s</b> %s<br />', __( 'ZIP:', 'apl' ), esc_html( get_post_meta($post->ID, '_listing_zip', true) ) );
-				printf( '<b>%s</b> %s<br />', __( 'MLS #:', 'apl' ), esc_html( get_post_meta($post->ID, '_listing_mls', true) ) );
-				printf( '<b>%s</b> %s<br />', __( 'Square Feet:', 'apl' ), esc_html( get_post_meta($post->ID, '_listing_sqft', true) ) );
-				printf( '<b>%s</b> %s<br />', __( 'Bedrooms:', 'apl' ), esc_html( get_post_meta($post->ID, '_listing_bedrooms', true) ) );
-				printf( '<b>%s</b> %s<br />', __( 'Bathrooms:', 'apl' ), esc_html( get_post_meta($post->ID, '_listing_bathrooms', true) ) );
-				printf( '<b>%s</b> %s<br />', __( 'Basement:', 'apl' ), esc_html( get_post_meta($post->ID, '_listing_basement', true) ) );
+				foreach ( (array) $this->property_details['col1'] as $label => $key ) {
+					printf( '<b>%s</b> %s<br />', esc_html( $label ), esc_html( get_post_meta($post->ID, $key, true) ) );
+				}
+				foreach ( (array) $this->property_details['col2'] as $label => $key ) {
+					printf( '<b>%s</b> %s<br />', esc_html( $label ), esc_html( get_post_meta($post->ID, $key, true) ) );
+				}
 				break;
 			case "listing_features":
 				echo get_the_term_list( $post->ID, 'features', '', ', ', '' );
@@ -177,17 +196,13 @@ class AgentPress_Listings {
 		$output .= '<div class="property-details">';
 
 		$output .= '<div class="property-details-col1">';
-			$output .= sprintf( '<b>%s</b> %s<br />', __( 'Price:', 'apl' ), esc_html( get_post_meta($post->ID, '_listing_price', true) ) );
-			$output .= sprintf( '<b>%s</b> %s<br />', __( 'Address:', 'apl' ), esc_html( get_post_meta($post->ID, '_listing_address', true) ) );
-			$output .= sprintf( '<b>%s</b> %s<br />', __( 'City:', 'apl' ), esc_html( get_post_meta($post->ID, '_listing_city', true) ) );
-			$output .= sprintf( '<b>%s</b> %s<br />', __( 'State:', 'apl' ), esc_html( get_post_meta($post->ID, '_listing_state', true) ) );
-			$output .= sprintf( '<b>%s</b> %s<br />', __( 'ZIP:', 'apl' ), esc_html( get_post_meta($post->ID, '_listing_zip', true) ) );
+			foreach ( (array) $this->property_details['col1'] as $label => $key ) {
+				$output .= sprintf( '<b>%s</b> %s<br />', esc_html( $label ), esc_html( get_post_meta($post->ID, $key, true) ) );	
+			}
 		$output .= '</div><div class="property-details-col2">';
-			$output .= sprintf( '<b>%s</b> %s<br />', __( 'MLS #:', 'apl' ), esc_html( get_post_meta($post->ID, '_listing_mls', true) ) );
-			$output .= sprintf( '<b>%s</b> %s<br />', __( 'Square Feet:', 'apl' ), esc_html( get_post_meta($post->ID, '_listing_sqft', true) ) );
-			$output .= sprintf( '<b>%s</b> %s<br />', __( 'Bedrooms:', 'apl' ), esc_html( get_post_meta($post->ID, '_listing_bedrooms', true) ) );
-			$output .= sprintf( '<b>%s</b> %s<br />', __( 'Bathrooms:', 'apl' ), esc_html( get_post_meta($post->ID, '_listing_bathrooms', true) ) );
-			$output .= sprintf( '<b>%s</b> %s<br />', __( 'Basement:', 'apl' ), esc_html( get_post_meta($post->ID, '_listing_basement', true) ) );
+			foreach ( (array) $this->property_details['col2'] as $label => $key ) {
+				$output .= sprintf( '<b>%s</b> %s<br />', esc_html( $label ), esc_html( get_post_meta($post->ID, $key, true) ) );	
+			}
 		$output .= '</div><div class="clear">';
 			$output .= sprintf( '<p><b>%s</b><br /> %s</p></div>', __( 'Additional Features:', 'apl' ), get_the_term_list( $post->ID, 'features', '', ', ', '' ) );
 

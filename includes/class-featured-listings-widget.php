@@ -50,14 +50,14 @@ class AgentPress_Featured_Listings_Widget extends WP_Widget {
 				if( strlen( $custom_text ) )
 					$loop .= sprintf( '<span class="listing-text">%s</span>', esc_html( $custom_text ) );
 				$loop .= sprintf( '<span class="listing-address">%s</span>', genesis_get_custom_field('_listing_address') );
-				$loop .= sprintf( '<span class="listing-city-state-zip">%s %s, %s</span>', genesis_get_custom_field('_listing_city'), genesis_get_custom_field('_listing_state'), genesis_get_custom_field('_listing_zip') );
+				$loop .= sprintf( '<span class="listing-city-state-zip">%s, %s %s</span>', genesis_get_custom_field('_listing_city'), genesis_get_custom_field('_listing_state'), genesis_get_custom_field('_listing_zip') );
 
 				$loop .= sprintf( '<a href="%s" class="more-link">%s</a>', get_permalink(), __( 'View Listing', 'apl' ) );
 
 				$toggle = $toggle == 'left' ? 'right' : 'left';
 
 				/** wrap in post class div, and output **/
-				printf( '<div class="%s"><div class="widget-wrap"><div class="listing-wrap">%s</div></div></div>', join( ' ', get_post_class( $toggle ) ), $loop );
+				printf( '<div class="%s"><div class="widget-wrap"><div class="listing-wrap">%s</div></div></div>', join( ' ', get_post_class( $toggle ) ), apply_filters( 'agentpress_featured_listings_widget_loop', $loop ) );
 
 			endwhile; endif;
 			wp_reset_query();

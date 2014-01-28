@@ -52,7 +52,6 @@ class AgentPress_Listings_Search_Widget extends WP_Widget {
 
 		echo '<input type="submit" id="searchsubmit" class="searchsubmit" value="'. esc_attr( $instance['button_text'] ) .'" />
 		<div class="clear"></div>
-	</div>
 	</form>';
 
 		echo $after_widget;

@@ -12,22 +12,18 @@ $pattern = '<p><label>%s<br /><input type="text" name="ap[%s]" value="%s" /></la
 
 echo '<div style="width: 45%; float: left">';
 
-	printf( $pattern, __( 'Price:', 'apl' ), '_listing_price', esc_attr( genesis_get_custom_field('_listing_price') ) );
-	printf( $pattern, __( 'Address:', 'apl' ), '_listing_address', esc_attr( genesis_get_custom_field('_listing_address') ) );
-	printf( $pattern, __( 'City:', 'apl' ), '_listing_city', esc_attr( genesis_get_custom_field('_listing_city') ) );
-	printf( $pattern, __( 'State:', 'apl' ), '_listing_state', esc_attr( genesis_get_custom_field('_listing_state') ) );
-	printf( $pattern, __( 'ZIP:', 'apl' ), '_listing_zip', esc_attr( genesis_get_custom_field('_listing_zip') ) );
+	foreach ( (array) $this->property_details['col1'] as $label => $key ) {
+		printf( $pattern, esc_html( $label ), $key, esc_attr( genesis_get_custom_field( $key ) ) );
+	}
 	printf( '<p><a class="button" href="%s" onclick="%s">%s</a></p>', '#', 'ap_send_to_editor(\'[property_details]\')', __( 'Send to text editor', 'apl' ) );
 
 echo '</div>';
 
 echo '<div style="width: 45%; float: left;">';
 
-	printf( $pattern, __( 'MLS #:', 'apl' ), '_listing_mls', esc_attr( genesis_get_custom_field('_listing_mls') ) );
-	printf( $pattern, __( 'Square Feet:', 'apl' ), '_listing_sqft', esc_attr( genesis_get_custom_field('_listing_sqft') ) );
-	printf( $pattern, __( 'Bedrooms:', 'apl' ), '_listing_bedrooms', esc_attr( genesis_get_custom_field('_listing_bedrooms') ) );
-	printf( $pattern, __( 'Bathrooms:', 'apl' ), '_listing_bathrooms', esc_attr( genesis_get_custom_field('_listing_bathrooms') ) );
-	printf( $pattern, __( 'Basement:', 'apl' ), '_listing_basement', esc_attr( genesis_get_custom_field('_listing_basement') ) );
+	foreach ( (array) $this->property_details['col2'] as $label => $key ) {
+		printf( $pattern, esc_html( $label ), $key, esc_attr( genesis_get_custom_field( $key ) ) );
+	}
 
 echo '</div><br style="clear: both;" /><br /><br />';
 

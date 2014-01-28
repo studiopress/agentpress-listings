@@ -6,7 +6,7 @@
 	Author: StudioPress
 	Author URI: http://www.studiopress.com/
 
-	Version: 0.9.0
+	Version: 0.9.1
 
 	License: GNU General Public License v2.0 (or later)
 	License URI: http://www.opensource.org/licenses/gpl-license.php
@@ -46,7 +46,7 @@ function agentpress_listings_activation() {
 
 }
 
-add_action( 'genesis_setup', 'agentpress_listings_init' );
+add_action( 'after_setup_theme', 'agentpress_listings_init' );
 /**
  * Initialize AgentPress Listings.
  *
@@ -55,6 +55,10 @@ add_action( 'genesis_setup', 'agentpress_listings_init' );
  * @since 0.1.0
  */
 function agentpress_listings_init() {
+	
+	/** Do nothing if a Genesis child theme isn't active */
+	if ( ! function_exists( 'genesis_get_option' ) )
+		return;
 
 	global $_agentpress_listings, $_agentpress_taxonomies;
 
