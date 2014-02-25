@@ -194,11 +194,11 @@ class AgentPress_Listings {
 
 		$output .= '<div class="property-details">';
 
-		$output .= '<div class="property-details-col1">';
+		$output .= '<div class="property-details-col1 one-half first">';
 			foreach ( (array) $this->property_details['col1'] as $label => $key ) {
 				$output .= sprintf( '<b>%s</b> %s<br />', esc_html( $label ), esc_html( get_post_meta($post->ID, $key, true) ) );	
 			}
-		$output .= '</div><div class="property-details-col2">';
+		$output .= '</div><div class="property-details-col2 one-half">';
 			foreach ( (array) $this->property_details['col2'] as $label => $key ) {
 				$output .= sprintf( '<b>%s</b> %s<br />', esc_html( $label ), esc_html( get_post_meta($post->ID, $key, true) ) );	
 			}
