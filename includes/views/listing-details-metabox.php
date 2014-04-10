@@ -3,12 +3,12 @@ wp_nonce_field( 'agentpress_details_metabox_save', 'agentpress_details_metabox_n
 
 echo '<div style="width: 90%; float: left">';
 
-	printf( '<p><label>%s<input type="text" name="ap[_listing_text]" value="%s" /></label></p>', __( 'Custom Text: ', 'apl' ), esc_attr( genesis_get_custom_field('_listing_text') ) );
+	printf( '<p><label>%s<input type="text" class="widefat" name="ap[_listing_text]" value="%s" /></label></p>', __( 'Custom Text: ', 'apl' ), esc_attr( genesis_get_custom_field('_listing_text') ) );
 	printf( '<p><span class="description">%s</span></p>', __( 'Custom text shows on the featured listings widget image.', 'apl' ) );
 
 echo '</div><br style="clear: both;" /><br /><br />';
 
-$pattern = '<p><label>%s<br /><input type="text" name="ap[%s]" value="%s" /></label></p>';
+$pattern = '<p><label>%s<br /><input type="text" class="regular-text" name="ap[%s]" value="%s" /></label></p>';
 
 echo '<div style="width: 45%; float: left">';
 

@@ -72,7 +72,7 @@
 			<h3><?php _e( 'Add New Listing Taxonomy', 'apl' ); ?></h3>
 
 			<form method="post" action="<?php echo admin_url( 'admin.php?page=register-taxonomies&amp;action=create' ); ?>">
-			<?php wp_nonce_field( 'agentpress-action_create-taxonomy' ); ?>
+			<?php wp_nonce_field( 'agentpress-action_create-taxonomy', 'agentpress-action_create-taxonomy' ); ?>
 
 			<div class="form-field">
 				<label for="taxonomy-id"><?php _e( 'ID', 'apl' ); ?></label>

@@ -18,12 +18,12 @@ class AgentPress_Taxonomies {
 	 */
 	function __construct() {
 
-		add_action( 'admin_init', array( &$this, 'register_settings' ) );
-		add_action( 'admin_menu', array( &$this, 'settings_init' ), 15 );
-		add_action( 'admin_init', array( &$this, 'actions' ) );
-		add_action( 'admin_notices', array( &$this, 'notices' ) );
+		add_action( 'admin_init', array( $this, 'register_settings' ) );
+		add_action( 'admin_menu', array( $this, 'settings_init' ), 15 );
+		add_action( 'admin_init', array( $this, 'actions' ) );
+		add_action( 'admin_notices', array( $this, 'notices' ) );
 
-		add_action( 'init', array( &$this, 'register_taxonomies' ), 15 );
+		add_action( 'init', array( $this, 'register_taxonomies' ), 15 );
 
 	}
 
@@ -36,7 +36,7 @@ class AgentPress_Taxonomies {
 
 	function settings_init() {
 
-		add_submenu_page( 'edit.php?post_type=listing', __( 'Register Taxonomies', 'apl' ), __( 'Register Taxonomies', 'apl' ), 'manage_options', $this->menu_page, array( &$this, 'admin' ) );
+		add_submenu_page( 'edit.php?post_type=listing', __( 'Register Taxonomies', 'apl' ), __( 'Register Taxonomies', 'apl' ), 'manage_options', $this->menu_page, array( $this, 'admin' ) );
 
 	}
 
@@ -46,18 +46,23 @@ class AgentPress_Taxonomies {
 			return;
 		}
 
+		// bail if no taxonomy is sent
+		if ( ! isset( $_REQUEST['action'] ) || isset( $_REQUEST['action'] ) && empty( $_REQUEST['action'] ) ) {
+			return;
+		}
+
 		/** This section handles the data if a new taxonomy is created */
-		if ( isset( $_REQUEST['action'] ) && 'create' == $_REQUEST['action'] ) {
+		if ( isset( $_POST['agentpress_taxonomy'] ) && isset( $_REQUEST['action'] ) && 'create' == $_REQUEST['action'] ) {
 			$this->create_taxonomy( $_POST['agentpress_taxonomy'] );
 		}
 
 		/** This section handles the data if a taxonomy is deleted */
-		if ( isset( $_REQUEST['action'] ) && 'delete' == $_REQUEST['action'] ) {
+		if ( isset( $_REQUEST['id'] ) && isset( $_REQUEST['action'] ) && 'delete' == $_REQUEST['action'] ) {
 			$this->delete_taxonomy( $_REQUEST['id'] );
 		}
 
 		/** This section handles the data if a taxonomy is being edited */
-		if ( isset( $_REQUEST['action'] ) && 'edit' == $_REQUEST['action'] ) {
+		if ( isset( $_POST['agentpress_taxonomy'] ) && isset( $_REQUEST['action'] ) && 'edit' == $_REQUEST['action'] ) {
 			$this->edit_taxonomy( $_POST['agentpress_taxonomy'] );
 		}
 
@@ -81,41 +86,56 @@ class AgentPress_Taxonomies {
 	function create_taxonomy( $args = array() ) {
 
 		/**** VERIFY THE NONCE ****/
+		wp_verify_nonce( 'agentpress-action_create-taxonomy', 'agentpress-action_create-taxonomy' );
 
 		/** No empty fields */
-		if ( ! isset( $args['id'] ) || empty( $args['id'] ) )
+		if ( ! isset( $args['id'] ) || empty( $args['id'] ) ) {
 			wp_die( __( 'Please complete all required fields.', 'apl' ) );
-		if ( ! isset( $args['name'] ) || empty( $args['name'] ) )
+		}
+
+		if ( ! isset( $args['name'] ) || empty( $args['name'] ) ) {
 			wp_die( __( 'Please complete all required fields.', 'apl' ) );
-		if ( ! isset( $args['singular_name'] ) || empty( $args['singular_name'] ) )
+		}
+
+		if ( ! isset( $args['singular_name'] ) || empty( $args['singular_name'] ) ) {
 			wp_die( __( 'Please complete all required fields.', 'apl' ) );
+		}
 
 		extract( $args );
 
-		$labels = array(
-			'name'                  => strip_tags( $name ),
-			'singular_name'         => strip_tags( $singular_name ),
-			'menu_name'             => strip_tags( $name ),
+		// sanitize my ID
+		$taxonomy_id	= sanitize_title_with_dashes( $id );
 
-			'search_items'          => sprintf( __( 'Search %s', 'apl' ), strip_tags( $name ) ),
-			'popular_items'         => sprintf( __( 'Popular %s', 'apl' ), strip_tags( $name ) ),
-			'all_items'             => sprintf( __( 'All %s', 'apl' ), strip_tags( $name ) ),
-			'edit_item'             => sprintf( __( 'Edit %s', 'apl' ), strip_tags( $singular_name ) ),
-			'update_item'           => sprintf( __( 'Update %s', 'apl' ), strip_tags( $singular_name ) ),
-			'add_new_item'          => sprintf( __( 'Add New %s', 'apl' ), strip_tags( $singular_name ) ),
-			'new_item_name'         => sprintf( __( 'New %s Name', 'apl' ), strip_tags( $singular_name ) ),
-			'add_or_remove_items'   => sprintf( __( 'Add or Remove %s', 'apl' ), strip_tags( $name ) ),
-			'choose_from_most_used' => sprintf( __( 'Choose from the most used %s', 'apl' ), strip_tags( $name ) )
+		// sanitize my plural name
+		$plural_name	= sanitize_text_field( $name );
+
+		// sanitize my single name
+		$singular_name	= sanitize_text_field( $singular_name );
+
+		$labels = array(
+			'name'                  => $plural_name,
+			'singular_name'         => $singular_name,
+			'menu_name'             => $plural_name,
+
+			'search_items'          => sprintf( __( 'Search %s', 'apl' ), $plural_name ),
+			'popular_items'         => sprintf( __( 'Popular %s', 'apl' ), $plural_name ),
+			'all_items'             => sprintf( __( 'All %s', 'apl' ), $plural_name ),
+			'edit_item'             => sprintf( __( 'Edit %s', 'apl' ), $singular_name ),
+			'update_item'           => sprintf( __( 'Update %s', 'apl' ), $singular_name ),
+			'add_new_item'          => sprintf( __( 'Add New %s', 'apl' ), $singular_name ),
+			'new_item_name'         => sprintf( __( 'New %s Name', 'apl' ), $singular_name ),
+			'add_or_remove_items'   => sprintf( __( 'Add or Remove %s', 'apl' ), $plural_name ),
+			'choose_from_most_used' => sprintf( __( 'Choose from the most used %s', 'apl' ), $plural_name )
 		);
 
 		$args = array(
 			'labels'       => $labels,
 			'hierarchical' => true,
-			'rewrite'      => array( 'slug' => $id ),
+			'rewrite'      => array( 'slug' => $taxonomy_id ),
 			'editable'     => 1
 		);
 
-		$tax = array( $id => $args );
+		$tax = array( $taxonomy_id => $args );
 
 		$options = get_option( $this->settings_field );
 
@@ -137,8 +157,9 @@ class AgentPress_Taxonomies {
 		/**** VERIFY THE NONCE ****/
 
 		/** No empty ID */
-		if ( ! isset( $id ) || empty( $id ) )
+		if ( ! isset( $id ) || empty( $id ) ) {
 			wp_die( __( "Nice try, partner. But that taxonomy doesn't exist. Click back and try again.", 'apl' ) );
+		}
 
 		$options = get_option( $this->settings_field );
 
@@ -160,41 +181,58 @@ class AgentPress_Taxonomies {
 	function edit_taxonomy( $args = array() ) {
 
 		/**** VERIFY THE NONCE ****/
+		wp_verify_nonce( 'agentpress-action_edit-taxonomy', 'agentpress-action_edit-taxonomy' );
 
 		/** No empty fields */
-		if ( ! isset( $args['id'] ) || empty( $args['id'] ) )
+		if ( ! isset( $args['id'] ) || empty( $args['id'] ) ) {
 			wp_die( __( 'Please complete all required fields.', 'apl' ) );
-		if ( ! isset( $args['name'] ) || empty( $args['name'] ) )
+		}
+
+		if ( ! isset( $args['name'] ) || empty( $args['name'] ) ) {
 			wp_die( __( 'Please complete all required fields.', 'apl' ) );
-		if ( ! isset( $args['singular_name'] ) || empty( $args['singular_name'] ) )
+		}
+
+		if ( ! isset( $args['singular_name'] ) || empty( $args['singular_name'] ) ) {
 			wp_die( __( 'Please complete all required fields.', 'apl' ) );
+		}
 
 		extract( $args );
 
-		$labels = array(
-			'name'                  => strip_tags( $name ),
-			'singular_name'         => strip_tags( $singular_name ),
-			'menu_name'             => strip_tags( $name ),
+		// sanitize my ID
+		$taxonomy_id	= sanitize_title_with_dashes( $id );
 
-			'search_items'          => sprintf( __( 'Search %s', 'apl' ), strip_tags( $name ) ),
-			'popular_items'         => sprintf( __( 'Popular %s', 'apl' ), strip_tags( $name ) ),
-			'all_items'             => sprintf( __( 'All %s', 'apl' ), strip_tags( $name ) ),
-			'edit_item'             => sprintf( __( 'Edit %s', 'apl' ), strip_tags( $singular_name ) ),
-			'update_item'           => sprintf( __( 'Update %s', 'apl' ), strip_tags( $singular_name ) ),
-			'add_new_item'          => sprintf( __( 'Add New %s', 'apl' ), strip_tags( $singular_name ) ),
-			'new_item_name'         => sprintf( __( 'New %s Name', 'apl' ), strip_tags( $singular_name ) ),
-			'add_or_remove_items'   => sprintf( __( 'Add or Remove %s', 'apl' ), strip_tags( $name ) ),
-			'choose_from_most_used' => sprintf( __( 'Choose from the most used %s', 'apl' ), strip_tags( $name ) )
+		// sanitize my plural name
+		$plural_name	= sanitize_text_field( $name );
+
+		// sanitize my single name
+		$singular_name	= sanitize_text_field( $singular_name );
+
+		$labels = array(
+
+			'name'                  => $plural_name,
+			'singular_name'         => $singular_name,
+			'menu_name'             => $plural_name,
+
+			'search_items'          => sprintf( __( 'Search %s', 'apl' ), $plural_name ),
+			'popular_items'         => sprintf( __( 'Popular %s', 'apl' ), $plural_name ),
+			'all_items'             => sprintf( __( 'All %s', 'apl' ), $plural_name ),
+			'edit_item'             => sprintf( __( 'Edit %s', 'apl' ), $singular_name ),
+			'update_item'           => sprintf( __( 'Update %s', 'apl' ), $singular_name ),
+			'add_new_item'          => sprintf( __( 'Add New %s', 'apl' ), $singular_name ),
+			'new_item_name'         => sprintf( __( 'New %s Name', 'apl' ), $singular_name ),
+			'add_or_remove_items'   => sprintf( __( 'Add or Remove %s', 'apl' ), $plural_name ),
+			'choose_from_most_used' => sprintf( __( 'Choose from the most used %s', 'apl' ), $plural_name )
+
 		);
 
 		$args = array(
 			'labels'       => $labels,
 			'hierarchical' => true,
-			'rewrite'      => array( 'slug' => $id ),
+			'rewrite'      => array( 'slug' => $taxonomy_id ),
 			'editable'     => 1
 		);
 
-		$tax = array( $id => $args );
+		$tax = array( $taxonomy_id => $args );
 
 		$options = get_option( $this->settings_field );
 

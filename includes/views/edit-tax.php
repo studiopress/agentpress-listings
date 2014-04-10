@@ -12,7 +12,7 @@ if ( array_key_exists( $_REQUEST['id'], (array) $options ) ) {
 <h2><?php _e( 'Edit Taxonomy', 'apl' ); ?></h2>
 
 <form method="post" action="<?php echo admin_url( 'admin.php?page=' . $this->menu_page . '&amp;action=edit' ); ?>">
-<?php wp_nonce_field( 'agentpress-action_edit-taxonomy' ); ?>
+<?php wp_nonce_field( 'agentpress-action_edit-taxonomy', 'agentpress-action_edit-taxonomy' ); ?>
 <table class="form-table">
 
 	<tr class="form-field">
