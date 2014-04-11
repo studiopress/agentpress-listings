@@ -104,7 +104,7 @@ class AgentPress_Taxonomies {
 		extract( $args );
 
 		// sanitize my ID
-		$taxonomy_id	= sanitize_title_with_dashes( $id );
+		$taxonomy_id	= sanitize_key( $id );
 
 		// sanitize my plural name
 		$plural_name	= sanitize_text_field( $name );
