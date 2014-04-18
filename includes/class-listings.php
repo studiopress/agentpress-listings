@@ -52,7 +52,6 @@ class AgentPress_Listings {
 		add_shortcode( 'property_map', array( $this, 'property_map_shortcode' ) );
 		add_shortcode( 'property_video', array( $this, 'property_video_shortcode' ) );
 
-//		add_action( 'admin_head', array( $this, 'admin_style' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_js' ) );
 
 	}
@@ -150,6 +149,16 @@ class AgentPress_Listings {
 	        }
 
 	    }
+
+		// extra check for price that can create a sortable value
+		if ( isset( $property_details['_listing_price'] ) && ! empty( $property_details['_listing_price'] ) ) {
+			// strip anything other than a decimal
+			$price_sortable	= preg_replace( '/[^0-9\.]/', '', $property_details['_listing_price'] );
+			// update the value with a floatval check
+			update_post_meta( $post_id, '_listing_price_sortable', floatval( $price_sortable ) );
+		} else {
+			delete_post_meta( $post_id, '_listing_price_sortable' );
+		}
 
 	    // delete the transient inside the widget
 	    delete_transient( 'agentpress_featured_listing_data_'.$post_id );

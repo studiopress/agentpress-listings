@@ -106,6 +106,11 @@ class AgentPress_Taxonomies {
 		// sanitize my ID
 		$taxonomy_id	= sanitize_key( $id );
 
+		// bail if the name is empty after sanitation
+		if ( empty( $taxonomy_id ) ) {
+			wp_die( __( 'Please enter a compatible taxonomy ID.', 'apl' ) );
+		}
+
 		// sanitize my plural name
 		$plural_name	= sanitize_text_field( $name );
 
