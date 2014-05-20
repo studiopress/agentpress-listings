@@ -83,39 +83,48 @@ class AgentPress_Taxonomies {
 		/**** VERIFY THE NONCE ****/
 
 		/** No empty fields */
-		if ( ! isset( $args['id'] ) || empty( $args['id'] ) )
+		if ( ! isset( $args['id'] ) || empty( $args['id'] ) ) {
 			wp_die( __( 'Please complete all required fields.', 'apl' ) );
-		if ( ! isset( $args['name'] ) || empty( $args['name'] ) )
+		}
+		if ( ! isset( $args['name'] ) || empty( $args['name'] ) ) {
 			wp_die( __( 'Please complete all required fields.', 'apl' ) );
-		if ( ! isset( $args['singular_name'] ) || empty( $args['singular_name'] ) )
+		}
+		if ( ! isset( $args['singular_name'] ) || empty( $args['singular_name'] ) ) {
 			wp_die( __( 'Please complete all required fields.', 'apl' ) );
+		}
 
-		extract( $args );
+		//* Sanitize id
+		$args['id'] = sanitize_id( $args['id'] );
+
+		//* Bail, if not a valid ID
+		if ( ! $args['id'] ) {
+			wp_die( __( 'You have given this taxonomy an invalid slug/ID. Please try again.', 'apl' ) );
+		}
 
 		$labels = array(
-			'name'                  => strip_tags( $name ),
-			'singular_name'         => strip_tags( $singular_name ),
-			'menu_name'             => strip_tags( $name ),
+			'name'                  => strip_tags( $args['name'] ),
+			'singular_name'         => strip_tags( $args['singular_name'] ),
+			'menu_name'             => strip_tags( $args['name'] ),
 
-			'search_items'          => sprintf( __( 'Search %s', 'apl' ), strip_tags( $name ) ),
-			'popular_items'         => sprintf( __( 'Popular %s', 'apl' ), strip_tags( $name ) ),
-			'all_items'             => sprintf( __( 'All %s', 'apl' ), strip_tags( $name ) ),
-			'edit_item'             => sprintf( __( 'Edit %s', 'apl' ), strip_tags( $singular_name ) ),
-			'update_item'           => sprintf( __( 'Update %s', 'apl' ), strip_tags( $singular_name ) ),
-			'add_new_item'          => sprintf( __( 'Add New %s', 'apl' ), strip_tags( $singular_name ) ),
-			'new_item_name'         => sprintf( __( 'New %s Name', 'apl' ), strip_tags( $singular_name ) ),
-			'add_or_remove_items'   => sprintf( __( 'Add or Remove %s', 'apl' ), strip_tags( $name ) ),
-			'choose_from_most_used' => sprintf( __( 'Choose from the most used %s', 'apl' ), strip_tags( $name ) )
+			'search_items'          => sprintf( __( 'Search %s', 'apl' ), strip_tags( $args['name'] ) ),
+			'popular_items'         => sprintf( __( 'Popular %s', 'apl' ), strip_tags( $args['name'] ) ),
+			'all_items'             => sprintf( __( 'All %s', 'apl' ), strip_tags( $args['name'] ) ),
+			'edit_item'             => sprintf( __( 'Edit %s', 'apl' ), strip_tags( $args['singular_name'] ) ),
+			'update_item'           => sprintf( __( 'Update %s', 'apl' ), strip_tags( $args['singular_name'] ) ),
+			'add_new_item'          => sprintf( __( 'Add New %s', 'apl' ), strip_tags( $args['singular_name'] ) ),
+			'new_item_name'         => sprintf( __( 'New %s Name', 'apl' ), strip_tags( $args['singular_name'] ) ),
+			'add_or_remove_items'   => sprintf( __( 'Add or Remove %s', 'apl' ), strip_tags( $args['name'] ) ),
+			'choose_from_most_used' => sprintf( __( 'Choose from the most used %s', 'apl' ), strip_tags( $args['name'] ) )
 		);
 
 		$args = array(
 			'labels'       => $labels,
 			'hierarchical' => true,
-			'rewrite'      => array( 'slug' => $id ),
+			'rewrite'      => array( 'slug' => $args['id'] ),
 			'editable'     => 1
 		);
 
-		$tax = array( $id => $args );
+		$tax = array( $args['id'] => $args );
 
 		$options = get_option( $this->settings_field );
 
@@ -169,22 +178,20 @@ class AgentPress_Taxonomies {
 		if ( ! isset( $args['singular_name'] ) || empty( $args['singular_name'] ) )
 			wp_die( __( 'Please complete all required fields.', 'apl' ) );
 
-		extract( $args );
-
 		$labels = array(
-			'name'                  => strip_tags( $name ),
-			'singular_name'         => strip_tags( $singular_name ),
-			'menu_name'             => strip_tags( $name ),
+			'name'                  => strip_tags( $args['name'] ),
+			'singular_name'         => strip_tags( $args['singular_name'] ),
+			'menu_name'             => strip_tags( $args['name'] ),
 
-			'search_items'          => sprintf( __( 'Search %s', 'apl' ), strip_tags( $name ) ),
-			'popular_items'         => sprintf( __( 'Popular %s', 'apl' ), strip_tags( $name ) ),
-			'all_items'             => sprintf( __( 'All %s', 'apl' ), strip_tags( $name ) ),
-			'edit_item'             => sprintf( __( 'Edit %s', 'apl' ), strip_tags( $singular_name ) ),
-			'update_item'           => sprintf( __( 'Update %s', 'apl' ), strip_tags( $singular_name ) ),
-			'add_new_item'          => sprintf( __( 'Add New %s', 'apl' ), strip_tags( $singular_name ) ),
-			'new_item_name'         => sprintf( __( 'New %s Name', 'apl' ), strip_tags( $singular_name ) ),
-			'add_or_remove_items'   => sprintf( __( 'Add or Remove %s', 'apl' ), strip_tags( $name ) ),
-			'choose_from_most_used' => sprintf( __( 'Choose from the most used %s', 'apl' ), strip_tags( $name ) )
+			'search_items'          => sprintf( __( 'Search %s', 'apl' ), strip_tags( $args['name'] ) ),
+			'popular_items'         => sprintf( __( 'Popular %s', 'apl' ), strip_tags( $args['name'] ) ),
+			'all_items'             => sprintf( __( 'All %s', 'apl' ), strip_tags( $args['name'] ) ),
+			'edit_item'             => sprintf( __( 'Edit %s', 'apl' ), strip_tags( $args['singular_name'] ) ),
+			'update_item'           => sprintf( __( 'Update %s', 'apl' ), strip_tags( $args['singular_name'] ) ),
+			'add_new_item'          => sprintf( __( 'Add New %s', 'apl' ), strip_tags( $args['singular_name'] ) ),
+			'new_item_name'         => sprintf( __( 'New %s Name', 'apl' ), strip_tags( $args['singular_name'] ) ),
+			'add_or_remove_items'   => sprintf( __( 'Add or Remove %s', 'apl' ), strip_tags( $args['name'] ) ),
+			'choose_from_most_used' => sprintf( __( 'Choose from the most used %s', 'apl' ), strip_tags( $args['name'] ) )
 		);
 
 		$args = array(

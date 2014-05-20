@@ -10,13 +10,13 @@
  */
 class AgentPress_Listings {
 
-	var $settings_field = 'agentpress_taxonomies';
-	var $menu_page = 'register-taxonomies';
+	public $settings_field = 'agentpress_taxonomies';
+	public $menu_page = 'register-taxonomies';
 	
 	/**
 	 * Property details array.
 	 */
-	var $property_details;
+	public $property_details;
 
 	/**
 	 * Construct Method.
