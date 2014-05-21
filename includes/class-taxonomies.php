@@ -94,7 +94,7 @@ class AgentPress_Taxonomies {
 		}
 
 		//* Sanitize id
-		$args['id'] = sanitize_id( $args['id'] );
+		$args['id'] = sanitize_key( $args['id'] );
 
 		//* Bail, if not a valid ID
 		if ( ! $args['id'] ) {
