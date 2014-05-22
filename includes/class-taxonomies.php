@@ -94,10 +94,10 @@ class AgentPress_Taxonomies {
 		}
 
 		//* Sanitize id
-		$args['id'] = sanitize_key( $args['id'] );
+		$sanitized_id = sanitize_key( $args['id'] );
 
-		//* Bail, if not a valid ID
-		if ( ! $args['id'] ) {
+		//* Bail, if not a valid ID after sanitization
+		if ( ! $sanitized_id ) {
 			wp_die( __( 'You have given this taxonomy an invalid slug/ID. Please try again.', 'apl' ) );
 		}
 
@@ -120,11 +120,11 @@ class AgentPress_Taxonomies {
 		$args = array(
 			'labels'       => $labels,
 			'hierarchical' => true,
-			'rewrite'      => array( 'slug' => $args['id'] ),
+			'rewrite'      => array( 'slug' => $sanitized_id ),
 			'editable'     => 1
 		);
 
-		$tax = array( $args['id'] => $args );
+		$tax = array( $sanitized_id => $args );
 
 		$options = get_option( $this->settings_field );
 
