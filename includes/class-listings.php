@@ -52,7 +52,7 @@ class AgentPress_Listings {
 		add_shortcode( 'property_map', array( $this, 'property_map_shortcode' ) );
 		add_shortcode( 'property_video', array( $this, 'property_video_shortcode' ) );
 
-		add_action( 'admin_head', array( $this, 'admin_style' ) );
+		#add_action( 'admin_head', array( $this, 'admin_style' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_js' ) );
 
 	}
