@@ -104,6 +104,9 @@ class AgentPress_Listings {
 
 	function metabox_save( $post_id, $post ) {
 
+		if ( ! isset( $_POST['agentpress_details_metabox_nonce'] ) || ! isset( $_POST['ap'] ) )
+			return;
+
 		/** Verify the nonce */
 	    if ( ! wp_verify_nonce( $_POST['agentpress_details_metabox_nonce'], 'agentpress_details_metabox_save' ) )
 	        return;
