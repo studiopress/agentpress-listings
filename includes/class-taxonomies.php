@@ -97,7 +97,7 @@ class AgentPress_Taxonomies {
 		$sanitized_id = sanitize_key( $args['id'] );
 
 		//* Bail, if not a valid ID after sanitization
-		if ( ! $sanitized_id ) {
+		if ( ! $sanitized_id || is_numeric( $sanitized_id ) ) {
 			wp_die( __( 'You have given this taxonomy an invalid slug/ID. Please try again.', 'apl' ) );
 		}
 
