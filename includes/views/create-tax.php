@@ -42,7 +42,7 @@
 					<?php if ( isset( $data['editable'] ) && 0 === $data['editable'] ) : ?>
 						<?php echo '<strong>' . esc_html( $id ) . '</strong><br /><br />'; ?>
 					<?php else : ?>
-						<?php printf( '<a class="row-title" href="%s" title="Edit %s">%s</a>', admin_url( 'admin.php?page=' . $this->menu_page . '&amp;action=edit&amp;id=' . esc_html( $id ) ), esc_html( $id ), esc_html( $id ) ); ?>
+						<a class="row-title" href="<?php echo admin_url( 'admin.php?page=' . $this->menu_page . '&amp;view=edit&amp;id=' . esc_html( $id ) ); ?>"><?php echo esc_html( $id ); ?></a>
 
 						<br />
 
