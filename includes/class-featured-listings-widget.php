@@ -41,16 +41,34 @@ class AgentPress_Featured_Listings_Widget extends WP_Widget {
 			query_posts( $query_args );
 			if ( have_posts() ) : while ( have_posts() ) : the_post();
 
-				$loop = ''; /** initialze the $loop variable */
+				//* initialze the $loop variable
+				$loop        = '';
+
+				//* Pull all the listing information
+				$custom_text = genesis_get_custom_field( '_listing_text' );
+				$price       = genesis_get_custom_field( '_listing_price' );
+				$address     = genesis_get_custom_field( '_listing_address' );
+				$city        = genesis_get_custom_field( '_listing_city' );
+				$state       = genesis_get_custom_field( '_listing_state' );
+				$zip         = genesis_get_custom_field( '_listing_zip' );
 
 				$loop .= sprintf( '<a href="%s">%s</a>', get_permalink(), genesis_get_image( array( 'size' => 'properties' ) ) );
 
-				$loop .= sprintf( '<span class="listing-price">%s</span>', genesis_get_custom_field('_listing_price') );
-				$custom_text = genesis_get_custom_field( '_listing_text' );
-				if( strlen( $custom_text ) )
+				if ( $price ) {
+					$loop .= sprintf( '<span class="listing-price">%s</span>', $price );
+				}
+
+				if ( strlen( $custom_text ) ) {
 					$loop .= sprintf( '<span class="listing-text">%s</span>', esc_html( $custom_text ) );
-				$loop .= sprintf( '<span class="listing-address">%s</span>', genesis_get_custom_field('_listing_address') );
-				$loop .= sprintf( '<span class="listing-city-state-zip">%s, %s %s</span>', genesis_get_custom_field('_listing_city'), genesis_get_custom_field('_listing_state'), genesis_get_custom_field('_listing_zip') );
+				}
+
+				if ( $address ) {
+					$loop .= sprintf( '<span class="listing-address">%s</span>', $address );
+				}
+				
+				if ( $city || $state || || $zip ) {
+					$loop .= sprintf( '<span class="listing-city-state-zip">%s, %s %s</span>', $city, $state, $zip );
+				}
 
 				$loop .= sprintf( '<a href="%s" class="more-link">%s</a>', get_permalink(), __( 'View Listing', 'apl' ) );
 
