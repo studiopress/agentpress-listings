@@ -67,7 +67,25 @@ class AgentPress_Featured_Listings_Widget extends WP_Widget {
 				}
 				
 				if ( $city || $state || $zip ) {
-					$loop .= sprintf( '<span class="listing-city-state-zip">%s, %s %s</span>', $city, $state, $zip );
+
+					//* count number of completed fields
+					$pass = count( array_filter( array( $city, $state, $zip ) ) );
+
+					//* If only 1 field filled out, no comma
+					if ( 1 == $pass ) {
+						$city_state_zip = $city . $state . $zip;
+					}
+					//* If city filled out, comma after city
+					elseif ( $city ) {
+						$city_state_zip = $city . ", " . $state . " " . $zip;
+					}
+					//* Otherwise, comma after state
+					else {
+						$city_state_zip = $city . " " . $state . ", " . $zip;
+					}
+
+					$loop .= sprintf( '<span class="listing-city-state-zip">%s</span>', trim( $city_state_zip ) );
+
 				}
 
 				$loop .= sprintf( '<a href="%s" class="more-link">%s</a>', get_permalink(), __( 'View Listing', 'apl' ) );
