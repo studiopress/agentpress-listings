@@ -66,7 +66,7 @@ class AgentPress_Featured_Listings_Widget extends WP_Widget {
 					$loop .= sprintf( '<span class="listing-address">%s</span>', $address );
 				}
 				
-				if ( $city || $state || || $zip ) {
+				if ( $city || $state || $zip ) {
 					$loop .= sprintf( '<span class="listing-city-state-zip">%s, %s %s</span>', $city, $state, $zip );
 				}
 
