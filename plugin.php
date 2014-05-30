@@ -21,27 +21,34 @@ register_activation_hook( __FILE__, 'agentpress_listings_activation' );
  */
 function agentpress_listings_activation() {
 
-		$latest = '1.7.1';
+		$latest = '2.0.2';
 
-		$theme_info = get_theme_data( TEMPLATEPATH . '/style.css' );
+		if ( 'genesis' != get_option( 'template' ) ) {
 
-		if ( 'genesis' != basename( TEMPLATEPATH ) ) {
-	        deactivate_plugins( plugin_basename( __FILE__ ) ); /** Deactivate ourself */
+			//* Deactivate ourself
+			deactivate_plugins( plugin_basename( __FILE__ ) );
 			wp_die( sprintf( __( 'Sorry, you can\'t activate unless you have installed <a href="%s">Genesis</a>', 'apl' ), 'http://my.studiopress.com/themes/genesis/' ) );
+
 		}
 
-		if ( version_compare( $theme_info['Version'], $latest, '<' ) ) {
+		if ( version_compare( wp_get_theme( 'genesis' )->get( 'Version' ), $latest, '<' ) ) {
+
+			//* Deactivate ourself
 			deactivate_plugins( plugin_basename( __FILE__ ) ); /** Deactivate ourself */
 			wp_die( sprintf( __( 'Sorry, you cannot activate without <a href="%s">Genesis %s</a> or greater', 'apl' ), 'http://www.studiopress.com/support/showthread.php?t=19576', $latest ) );
+
 		}
 		
 		/** Flush rewrite rules */
 		if ( ! post_type_exists( 'listing' ) ) {
+
 			agentpress_listings_init();
 			global $_agentpress_listings, $_agentpress_taxonomies;
 			$_agentpress_listings->create_post_type();
 			$_agentpress_taxonomies->register_taxonomies();
+
 		}
+
 		flush_rewrite_rules();
 
 }
