@@ -25,18 +25,18 @@ class AgentPress_Listings {
 		
 		$this->property_details = apply_filters( 'agentpress_property_details', array(
 			'col1' => array( 
-			    __( 'Price:', 'apl' )   => '_listing_price', 
-			    __( 'Address:', 'apl' ) => '_listing_address', 
-			    __( 'City:', 'apl' )    => '_listing_city', 
-			    __( 'State:', 'apl' )   => '_listing_state', 
-			    __( 'ZIP:', 'apl' )     => '_listing_zip' 
+			    __( 'Price:', 'agentpress-listings' )   => '_listing_price', 
+			    __( 'Address:', 'agentpress-listings' ) => '_listing_address', 
+			    __( 'City:', 'agentpress-listings' )    => '_listing_city', 
+			    __( 'State:', 'agentpress-listings' )   => '_listing_state', 
+			    __( 'ZIP:', 'agentpress-listings' )     => '_listing_zip' 
 			), 
 			'col2' => array( 
-			    __( 'MLS #:', 'apl' )       => '_listing_mls', 
-			    __( 'Square Feet:', 'apl' ) => '_listing_sqft', 
-			    __( 'Bedrooms:', 'apl' )    => '_listing_bedrooms', 
-			    __( 'Bathrooms:', 'apl' )   => '_listing_bathrooms', 
-			    __( 'Basement:', 'apl' )    => '_listing_basement' 
+			    __( 'MLS #:', 'agentpress-listings' )       => '_listing_mls', 
+			    __( 'Square Feet:', 'agentpress-listings' ) => '_listing_sqft', 
+			    __( 'Bedrooms:', 'agentpress-listings' )    => '_listing_bedrooms', 
+			    __( 'Bathrooms:', 'agentpress-listings' )   => '_listing_bathrooms', 
+			    __( 'Basement:', 'agentpress-listings' )    => '_listing_basement' 
 			)
 		) );
 
@@ -65,18 +65,18 @@ class AgentPress_Listings {
 		$args = apply_filters( 'agentpress_listings_post_type_args',
 			array(
 				'labels' => array(
-					'name'               => __( 'Listings', 'apl' ),
-					'singular_name'      => __( 'Listing', 'apl' ),
-					'add_new'            => __( 'Add New', 'apl' ),
-					'add_new_item'       => __( 'Add New Listing', 'apl' ),
-					'edit'               => __( 'Edit', 'apl' ),
-					'edit_item'          => __( 'Edit Listing', 'apl' ),
-					'new_item'           => __( 'New Listing', 'apl' ),
-					'view'               => __( 'View Listing', 'apl' ),
-					'view_item'          => __( 'View Listing', 'apl' ),
-					'search_items'       => __( 'Search Listings', 'apl' ),
-					'not_found'          => __( 'No listings found', 'apl' ),
-					'not_found_in_trash' => __( 'No listings found in Trash', 'apl' )
+					'name'               => __( 'Listings', 'agentpress-listings' ),
+					'singular_name'      => __( 'Listing', 'agentpress-listings' ),
+					'add_new'            => __( 'Add New', 'agentpress-listings' ),
+					'add_new_item'       => __( 'Add New Listing', 'agentpress-listings' ),
+					'edit'               => __( 'Edit', 'agentpress-listings' ),
+					'edit_item'          => __( 'Edit Listing', 'agentpress-listings' ),
+					'new_item'           => __( 'New Listing', 'agentpress-listings' ),
+					'view'               => __( 'View Listing', 'agentpress-listings' ),
+					'view_item'          => __( 'View Listing', 'agentpress-listings' ),
+					'search_items'       => __( 'Search Listings', 'agentpress-listings' ),
+					'not_found'          => __( 'No listings found', 'agentpress-listings' ),
+					'not_found_in_trash' => __( 'No listings found in Trash', 'agentpress-listings' )
 				),
 				'public'        => true,
 				'query_var'     => true,
@@ -94,7 +94,7 @@ class AgentPress_Listings {
 
 	function register_meta_boxes() {
 
-		add_meta_box( 'listing_details_metabox', __( 'Property Details', 'apl' ), array( &$this, 'listing_details_metabox' ), 'listing', 'normal', 'high' );
+		add_meta_box( 'listing_details_metabox', __( 'Property Details', 'agentpress-listings' ), array( &$this, 'listing_details_metabox' ), 'listing', 'normal', 'high' );
 
 	}
 
@@ -157,11 +157,11 @@ class AgentPress_Listings {
 
 		$columns = array(
 			'cb'                 => '<input type="checkbox" />',
-			'listing_thumbnail'  => __( 'Thumbnail', 'apl' ),
-			'title'              => __( 'Listing Title', 'apl' ),
-			'listing_details'    => __( 'Details', 'apl' ),
-			'listing_features'   => __( 'Features', 'apl' ),
-			'listing_categories' => __( 'Categories', 'apl' )
+			'listing_thumbnail'  => __( 'Thumbnail', 'agentpress-listings' ),
+			'title'              => __( 'Listing Title', 'agentpress-listings' ),
+			'listing_details'    => __( 'Details', 'agentpress-listings' ),
+			'listing_features'   => __( 'Features', 'agentpress-listings' ),
+			'listing_categories' => __( 'Categories', 'agentpress-listings' )
 		);
 
 		return $columns;
@@ -216,7 +216,7 @@ class AgentPress_Listings {
 				$output .= sprintf( '<b>%s</b> %s<br />', esc_html( $label ), esc_html( get_post_meta($post->ID, $key, true) ) );	
 			}
 		$output .= '</div><div class="clear">';
-			$output .= sprintf( '<p><b>%s</b><br /> %s</p></div>', __( 'Additional Features:', 'apl' ), get_the_term_list( $post->ID, 'features', '', ', ', '' ) );
+			$output .= sprintf( '<p><b>%s</b><br /> %s</p></div>', __( 'Additional Features:', 'agentpress-listings' ), get_the_term_list( $post->ID, 'features', '', ', ', '' ) );
 
 		$output .= '</div>';
 

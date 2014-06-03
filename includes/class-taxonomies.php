@@ -36,7 +36,7 @@ class AgentPress_Taxonomies {
 
 	function settings_init() {
 
-		add_submenu_page( 'edit.php?post_type=listing', __( 'Register Taxonomies', 'apl' ), __( 'Register Taxonomies', 'apl' ), 'manage_options', $this->menu_page, array( &$this, 'admin' ) );
+		add_submenu_page( 'edit.php?post_type=listing', __( 'Register Taxonomies', 'agentpress-listings' ), __( 'Register Taxonomies', 'agentpress-listings' ), 'manage_options', $this->menu_page, array( &$this, 'admin' ) );
 
 	}
 
@@ -84,13 +84,13 @@ class AgentPress_Taxonomies {
 
 		/** No empty fields */
 		if ( ! isset( $args['id'] ) || empty( $args['id'] ) ) {
-			wp_die( __( 'Please complete all required fields.', 'apl' ) );
+			wp_die( __( 'Please complete all required fields.', 'agentpress-listings' ) );
 		}
 		if ( ! isset( $args['name'] ) || empty( $args['name'] ) ) {
-			wp_die( __( 'Please complete all required fields.', 'apl' ) );
+			wp_die( __( 'Please complete all required fields.', 'agentpress-listings' ) );
 		}
 		if ( ! isset( $args['singular_name'] ) || empty( $args['singular_name'] ) ) {
-			wp_die( __( 'Please complete all required fields.', 'apl' ) );
+			wp_die( __( 'Please complete all required fields.', 'agentpress-listings' ) );
 		}
 
 		//* Sanitize id
@@ -98,7 +98,7 @@ class AgentPress_Taxonomies {
 
 		//* Bail, if not a valid ID after sanitization
 		if ( ! $sanitized_id || is_numeric( $sanitized_id ) ) {
-			wp_die( __( 'You have given this taxonomy an invalid slug/ID. Please try again.', 'apl' ) );
+			wp_die( __( 'You have given this taxonomy an invalid slug/ID. Please try again.', 'agentpress-listings' ) );
 		}
 
 		$labels = array(
@@ -106,15 +106,15 @@ class AgentPress_Taxonomies {
 			'singular_name'         => strip_tags( $args['singular_name'] ),
 			'menu_name'             => strip_tags( $args['name'] ),
 
-			'search_items'          => sprintf( __( 'Search %s', 'apl' ), strip_tags( $args['name'] ) ),
-			'popular_items'         => sprintf( __( 'Popular %s', 'apl' ), strip_tags( $args['name'] ) ),
-			'all_items'             => sprintf( __( 'All %s', 'apl' ), strip_tags( $args['name'] ) ),
-			'edit_item'             => sprintf( __( 'Edit %s', 'apl' ), strip_tags( $args['singular_name'] ) ),
-			'update_item'           => sprintf( __( 'Update %s', 'apl' ), strip_tags( $args['singular_name'] ) ),
-			'add_new_item'          => sprintf( __( 'Add New %s', 'apl' ), strip_tags( $args['singular_name'] ) ),
-			'new_item_name'         => sprintf( __( 'New %s Name', 'apl' ), strip_tags( $args['singular_name'] ) ),
-			'add_or_remove_items'   => sprintf( __( 'Add or Remove %s', 'apl' ), strip_tags( $args['name'] ) ),
-			'choose_from_most_used' => sprintf( __( 'Choose from the most used %s', 'apl' ), strip_tags( $args['name'] ) )
+			'search_items'          => sprintf( __( 'Search %s', 'agentpress-listings' ), strip_tags( $args['name'] ) ),
+			'popular_items'         => sprintf( __( 'Popular %s', 'agentpress-listings' ), strip_tags( $args['name'] ) ),
+			'all_items'             => sprintf( __( 'All %s', 'agentpress-listings' ), strip_tags( $args['name'] ) ),
+			'edit_item'             => sprintf( __( 'Edit %s', 'agentpress-listings' ), strip_tags( $args['singular_name'] ) ),
+			'update_item'           => sprintf( __( 'Update %s', 'agentpress-listings' ), strip_tags( $args['singular_name'] ) ),
+			'add_new_item'          => sprintf( __( 'Add New %s', 'agentpress-listings' ), strip_tags( $args['singular_name'] ) ),
+			'new_item_name'         => sprintf( __( 'New %s Name', 'agentpress-listings' ), strip_tags( $args['singular_name'] ) ),
+			'add_or_remove_items'   => sprintf( __( 'Add or Remove %s', 'agentpress-listings' ), strip_tags( $args['name'] ) ),
+			'choose_from_most_used' => sprintf( __( 'Choose from the most used %s', 'agentpress-listings' ), strip_tags( $args['name'] ) )
 		);
 
 		$args = array(
@@ -147,7 +147,7 @@ class AgentPress_Taxonomies {
 
 		/** No empty ID */
 		if ( ! isset( $id ) || empty( $id ) )
-			wp_die( __( "Nice try, partner. But that taxonomy doesn't exist. Click back and try again.", 'apl' ) );
+			wp_die( __( "Nice try, partner. But that taxonomy doesn't exist. Click back and try again.", 'agentpress-listings' ) );
 
 		$options = get_option( $this->settings_field );
 
@@ -155,7 +155,7 @@ class AgentPress_Taxonomies {
 		if ( array_key_exists( $id, (array) $options ) ) {
 			unset( $options[$id] );
 		} else {
-			wp_die( __( "Nice try, partner. But that taxonomy doesn't exist. Click back and try again.", 'apl' ) );
+			wp_die( __( "Nice try, partner. But that taxonomy doesn't exist. Click back and try again.", 'agentpress-listings' ) );
 		}
 
 		/** Update the DB */
@@ -172,26 +172,26 @@ class AgentPress_Taxonomies {
 
 		/** No empty fields */
 		if ( ! isset( $args['id'] ) || empty( $args['id'] ) )
-			wp_die( __( 'Please complete all required fields.', 'apl' ) );
+			wp_die( __( 'Please complete all required fields.', 'agentpress-listings' ) );
 		if ( ! isset( $args['name'] ) || empty( $args['name'] ) )
-			wp_die( __( 'Please complete all required fields.', 'apl' ) );
+			wp_die( __( 'Please complete all required fields.', 'agentpress-listings' ) );
 		if ( ! isset( $args['singular_name'] ) || empty( $args['singular_name'] ) )
-			wp_die( __( 'Please complete all required fields.', 'apl' ) );
+			wp_die( __( 'Please complete all required fields.', 'agentpress-listings' ) );
 
 		$labels = array(
 			'name'                  => strip_tags( $args['name'] ),
 			'singular_name'         => strip_tags( $args['singular_name'] ),
 			'menu_name'             => strip_tags( $args['name'] ),
 
-			'search_items'          => sprintf( __( 'Search %s', 'apl' ), strip_tags( $args['name'] ) ),
-			'popular_items'         => sprintf( __( 'Popular %s', 'apl' ), strip_tags( $args['name'] ) ),
-			'all_items'             => sprintf( __( 'All %s', 'apl' ), strip_tags( $args['name'] ) ),
-			'edit_item'             => sprintf( __( 'Edit %s', 'apl' ), strip_tags( $args['singular_name'] ) ),
-			'update_item'           => sprintf( __( 'Update %s', 'apl' ), strip_tags( $args['singular_name'] ) ),
-			'add_new_item'          => sprintf( __( 'Add New %s', 'apl' ), strip_tags( $args['singular_name'] ) ),
-			'new_item_name'         => sprintf( __( 'New %s Name', 'apl' ), strip_tags( $args['singular_name'] ) ),
-			'add_or_remove_items'   => sprintf( __( 'Add or Remove %s', 'apl' ), strip_tags( $args['name'] ) ),
-			'choose_from_most_used' => sprintf( __( 'Choose from the most used %s', 'apl' ), strip_tags( $args['name'] ) )
+			'search_items'          => sprintf( __( 'Search %s', 'agentpress-listings' ), strip_tags( $args['name'] ) ),
+			'popular_items'         => sprintf( __( 'Popular %s', 'agentpress-listings' ), strip_tags( $args['name'] ) ),
+			'all_items'             => sprintf( __( 'All %s', 'agentpress-listings' ), strip_tags( $args['name'] ) ),
+			'edit_item'             => sprintf( __( 'Edit %s', 'agentpress-listings' ), strip_tags( $args['singular_name'] ) ),
+			'update_item'           => sprintf( __( 'Update %s', 'agentpress-listings' ), strip_tags( $args['singular_name'] ) ),
+			'add_new_item'          => sprintf( __( 'Add New %s', 'agentpress-listings' ), strip_tags( $args['singular_name'] ) ),
+			'new_item_name'         => sprintf( __( 'New %s Name', 'agentpress-listings' ), strip_tags( $args['singular_name'] ) ),
+			'add_or_remove_items'   => sprintf( __( 'Add or Remove %s', 'agentpress-listings' ), strip_tags( $args['name'] ) ),
+			'choose_from_most_used' => sprintf( __( 'Choose from the most used %s', 'agentpress-listings' ), strip_tags( $args['name'] ) )
 		);
 
 		$args = array(
@@ -221,17 +221,17 @@ class AgentPress_Taxonomies {
 		$format = '<div id="message" class="updated"><p><strong>%s</strong></p></div>';
 
 		if ( isset( $_REQUEST['created'] ) && 'true' == $_REQUEST['created'] ) {
-			printf( $format, __('New taxonomy successfully created!', 'apl') );
+			printf( $format, __('New taxonomy successfully created!', 'agentpress-listings') );
 			return;
 		}
 
 		if ( isset( $_REQUEST['edited'] ) && 'true' == $_REQUEST['edited'] ) {
-			printf( $format, __('Taxonomy successfully edited!', 'apl') );
+			printf( $format, __('Taxonomy successfully edited!', 'agentpress-listings') );
 			return;
 		}
 
 		if ( isset( $_REQUEST['deleted'] ) && 'true' == $_REQUEST['deleted'] ) {
-			printf( $format, __('Taxonomy successfully deleted.', 'apl') );
+			printf( $format, __('Taxonomy successfully deleted.', 'agentpress-listings') );
 			return;
 		}
 
@@ -254,15 +254,15 @@ class AgentPress_Taxonomies {
 					'singular_name'         => strip_tags( $singular_name ),
 					'menu_name'             => strip_tags( $name ),
 
-					'search_items'          => sprintf( __( 'Search %s', 'apl' ), strip_tags( $name ) ),
-					'popular_items'         => sprintf( __( 'Popular %s', 'apl' ), strip_tags( $name ) ),
-					'all_items'             => sprintf( __( 'All %s', 'apl' ), strip_tags( $name ) ),
-					'edit_item'             => sprintf( __( 'Edit %s', 'apl' ), strip_tags( $singular_name ) ),
-					'update_item'           => sprintf( __( 'Update %s', 'apl' ), strip_tags( $singular_name ) ),
-					'add_new_item'          => sprintf( __( 'Add New %s', 'apl' ), strip_tags( $singular_name ) ),
-					'new_item_name'         => sprintf( __( 'New %s Name', 'apl' ), strip_tags( $singular_name ) ),
-					'add_or_remove_items'   => sprintf( __( 'Add or Remove %s', 'apl' ), strip_tags( $name ) ),
-					'choose_from_most_used' => sprintf( __( 'Choose from the most used %s', 'apl' ), strip_tags( $name ) )
+					'search_items'          => sprintf( __( 'Search %s', 'agentpress-listings' ), strip_tags( $name ) ),
+					'popular_items'         => sprintf( __( 'Popular %s', 'agentpress-listings' ), strip_tags( $name ) ),
+					'all_items'             => sprintf( __( 'All %s', 'agentpress-listings' ), strip_tags( $name ) ),
+					'edit_item'             => sprintf( __( 'Edit %s', 'agentpress-listings' ), strip_tags( $singular_name ) ),
+					'update_item'           => sprintf( __( 'Update %s', 'agentpress-listings' ), strip_tags( $singular_name ) ),
+					'add_new_item'          => sprintf( __( 'Add New %s', 'agentpress-listings' ), strip_tags( $singular_name ) ),
+					'new_item_name'         => sprintf( __( 'New %s Name', 'agentpress-listings' ), strip_tags( $singular_name ) ),
+					'add_or_remove_items'   => sprintf( __( 'Add or Remove %s', 'agentpress-listings' ), strip_tags( $name ) ),
+					'choose_from_most_used' => sprintf( __( 'Choose from the most used %s', 'agentpress-listings' ), strip_tags( $name ) )
 				),
 				'hierarchical' => 0,
 				'rewrite' => array( 'features' ),

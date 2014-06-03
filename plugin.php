@@ -27,7 +27,7 @@ function agentpress_listings_activation() {
 
 			//* Deactivate ourself
 			deactivate_plugins( plugin_basename( __FILE__ ) );
-			wp_die( sprintf( __( 'Sorry, you can\'t activate unless you have installed <a href="%s">Genesis</a>', 'apl' ), 'http://my.studiopress.com/themes/genesis/' ) );
+			wp_die( sprintf( __( 'Sorry, you can\'t activate unless you have installed <a href="%s">Genesis</a>', 'agentpress-listings' ), 'http://my.studiopress.com/themes/genesis/' ) );
 
 		}
 
@@ -35,7 +35,7 @@ function agentpress_listings_activation() {
 
 			//* Deactivate ourself
 			deactivate_plugins( plugin_basename( __FILE__ ) ); /** Deactivate ourself */
-			wp_die( sprintf( __( 'Sorry, you cannot activate without <a href="%s">Genesis %s</a> or greater', 'apl' ), 'http://www.studiopress.com/support/showthread.php?t=19576', $latest ) );
+			wp_die( sprintf( __( 'Sorry, you cannot activate without <a href="%s">Genesis %s</a> or greater', 'agentpress-listings' ), 'http://www.studiopress.com/support/showthread.php?t=19576', $latest ) );
 
 		}
 		
@@ -73,7 +73,7 @@ function agentpress_listings_init() {
 	define( 'APL_VERSION', '1.0.0' );
 
 	/** Load textdomain for translation */
-	load_plugin_textdomain( 'apl', false, basename( dirname( __FILE__ ) ) . '/languages/' );
+	load_plugin_textdomain( 'agentpress-listings', false, basename( dirname( __FILE__ ) ) . '/languages/' );
 
 	/** Includes */
 	require_once( dirname( __FILE__ ) . '/includes/functions.php' );
