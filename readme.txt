@@ -3,7 +3,7 @@ Contributors: nathanrice, wpmuguru, studiopress
 Tags: real estate, agentpress, genesis, genesiswp
 Requires at least: 3.8
 Tested up to: 3.8.1
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 
 This plugin adds a Listings custom post type for Real Estate agents.
 
@@ -55,3 +55,11 @@ No, but that doesn't necessarily mean it's perfect. Please report any bugs to us
 = 1.1.0 =
 * Fix spacing issues
 * Update Listings menu icon
+
+= 1.2.0 =
+* Update textdomain
+* Prevent invalid taxonomy slugs
+* Fix PHP notices and warnings
+* Fix link to edit taxonomy
+* Conditionally output markup in listing widget
+* Use wp_get_theme() instead of get_theme_data()
