@@ -57,6 +57,8 @@ class AgentPress_Listings {
 
 		add_filter( 'search_template', array( $this, 'search_template' ) );
 
+		add_filter( 'genesis_build_crumbs', array( $this, 'breadcrumbs' ), 10, 2 );
+
 	}
 
 	/**
@@ -255,6 +257,22 @@ class AgentPress_Listings {
 		$listing_template = locate_template( array( 'archive-listing.php' ), false );
 
 		return $listing_template ? $listing_template : $template;	
+
+	}
+
+	function breadcrumbs( $crumbs, $args ) {
+
+		$post_type = get_query_var( 'post_type' );
+
+		if ( is_array( $post_type ) || 'listing' != $post_type ) {
+			return $crumbs;
+		}
+
+		$crumbs = array_pop( $crumbs );
+
+		$crumbs[] = __( 'Listing Search Results', 'agentpress-listings' );
+
+		return $crumbs;
 
 	}
 
