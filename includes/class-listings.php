@@ -268,7 +268,7 @@ class AgentPress_Listings {
 			return $crumbs;
 		}
 
-		$crumbs = array_pop( $crumbs );
+		array_pop( $crumbs );
 
 		$crumbs[] = __( 'Listing Search Results', 'agentpress-listings' );
 
