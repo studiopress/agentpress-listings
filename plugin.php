@@ -1,15 +1,15 @@
 <?php
 /*
-	Plugin Name: AgentPress Listings
-	Plugin URI: http://www.studiopress.com/
-	Description: AgentPress Listings is a plugin which adds a Listings custom post type for Real Estate agents.
-	Author: StudioPress
-	Author URI: http://www.studiopress.com/
+Plugin Name: AgentPress Listings
+Plugin URI: http://www.studiopress.com/
+Description: AgentPress Listings is a plugin which adds a Listings custom post type for Real Estate agents.
+Author: StudioPress
+Author URI: http://www.studiopress.com/
 
-	Version: 1.2.0
+Version: 1.2.2
 
-	License: GNU General Public License v2.0 (or later)
-	License URI: http://www.opensource.org/licenses/gpl-license.php
+License: GNU General Public License v2.0 (or later)
+License URI: http://www.opensource.org/licenses/gpl-license.php
 */
 
 register_activation_hook( __FILE__, 'agentpress_listings_activation' );
