@@ -6,7 +6,7 @@ Description: AgentPress Listings is a plugin which adds a Listings custom post t
 Author: StudioPress
 Author URI: http://www.studiopress.com/
 
-Version: 1.2.2
+Version: 1.2.3
 
 License: GNU General Public License v2.0 (or later)
 License URI: http://www.opensource.org/licenses/gpl-license.php
