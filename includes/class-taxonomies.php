@@ -144,13 +144,28 @@ class AgentPress_Taxonomies {
 	function delete_taxonomy( $id = '' ) {
 
 		/**** VERIFY THE NONCE ****/
-
-		/** No empty ID */
-		if ( ! isset( $id ) || empty( $id ) )
-			wp_die( __( "Nice try, partner. But that taxonomy doesn't exist. Click back and try again.", 'agentpress-listings' ) );
-
+		
 		$options = get_option( $this->settings_field );
 
+		/** Remove any IDs that were somehow made or left blank */
+		if ( ! isset( $id ) || empty( $id ) ){
+			
+			$keep = array();
+			
+			foreach( $options as $id => $value ){
+				
+				if( '' !== $id ){
+					
+					$keep[$id] = $value;
+					
+				}
+				
+			}
+			
+			update_option( $this->settings_field, $keep );
+			
+		}
+		
 		/** Look for the ID, delete if it exists */
 		if ( array_key_exists( $id, (array) $options ) ) {
 			unset( $options[$id] );
