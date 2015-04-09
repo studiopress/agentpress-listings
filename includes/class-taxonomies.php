@@ -177,6 +177,8 @@ class AgentPress_Taxonomies {
 			wp_die( __( 'Please complete all required fields.', 'agentpress-listings' ) );
 		if ( ! isset( $args['singular_name'] ) || empty( $args['singular_name'] ) )
 			wp_die( __( 'Please complete all required fields.', 'agentpress-listings' ) );
+			
+		$id = $args['id'];
 
 		$labels = array(
 			'name'                  => strip_tags( $args['name'] ),
