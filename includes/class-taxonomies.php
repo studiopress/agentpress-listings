@@ -150,19 +150,19 @@ class AgentPress_Taxonomies {
 		/** Remove any IDs that were somehow made or left blank */
 		if ( ! isset( $id ) || empty( $id ) ){
 			
-			$keep = array();
+			$opts = array();
 			
-			foreach( $options as $id => $value ){
+			foreach( $options as $key => $value ){
 				
-				if( '' !== $id ){
+				if( ! empty( $key ) ){
 					
-					$keep[$id] = $value;
+					$opts[$key] = $value;
 					
 				}
 				
 			}
 			
-			update_option( $this->settings_field, $keep );
+			update_option( $this->settings_field, $opts );
 			
 		}
 		
