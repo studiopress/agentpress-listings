@@ -212,17 +212,29 @@ class AgentPress_Listings {
 		$output .= '<div class="property-details">';
 
 		$output .= '<div class="property-details-col1 one-half first">';
-			foreach ( (array) $this->property_details['col1'] as $label => $key ) {
-				$output .= sprintf( '<b>%s</b> %s<br />', esc_html( $label ), esc_html( get_post_meta($post->ID, $key, true) ) );	
+		foreach ( (array) $this->property_details['col1'] as $label => $key ) {
+			$value = get_post_meta($post->ID, $key, true);
+			if ( !empty( $value ) ) {
+				$output .= sprintf( '<b>%s</b> %s<br />', esc_html( $label ), esc_html( $value ) );
 			}
+		}
 		$output .= '</div><div class="property-details-col2 one-half">';
-			foreach ( (array) $this->property_details['col2'] as $label => $key ) {
-				$output .= sprintf( '<b>%s</b> %s<br />', esc_html( $label ), esc_html( get_post_meta($post->ID, $key, true) ) );	
+		foreach ( (array) $this->property_details['col2'] as $label => $key ) {
+			$value = get_post_meta($post->ID, $key, true);
+			if ( !empty( $value ) ) {
+				$output .= sprintf( '<b>%s</b> %s<br />', esc_html( $label ), esc_html( $value ) );
 			}
-		$output .= '</div><div class="clear">';
-			$output .= sprintf( '<p><b>%s</b><br /> %s</p></div>', __( 'Additional Features:', 'agentpress-listings' ), get_the_term_list( $post->ID, 'features', '', ', ', '' ) );
+		}
+		$output .= '</div>'; // end .one-half
 
-		$output .= '</div>';
+		// Output Additional features if any are attached to the Listing
+		$features = get_the_terms( $post->ID, 'features');
+		if ( !empty( $features ) ) {
+			$output .= '<div class="clear">';
+			$output .= sprintf('<p><b>%s</b><br /> %s</p></div>', __('Additional Features:', 'agentpress-listings'), get_the_term_list($post->ID, 'features', '', ', ', ''));
+		}
+
+		$output .= '</div>'; // end .property-details
 
 		return $output;
 

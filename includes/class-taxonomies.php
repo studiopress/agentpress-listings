@@ -211,6 +211,8 @@ class AgentPress_Taxonomies {
 			'choose_from_most_used' => sprintf( __( 'Choose from the most used %s', 'agentpress-listings' ), strip_tags( $args['name'] ) )
 		);
 
+		$id = $args['id'];
+		
 		$args = array(
 			'labels'       => $labels,
 			'hierarchical' => true,
