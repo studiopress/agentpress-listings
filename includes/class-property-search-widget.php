@@ -11,7 +11,7 @@ class AgentPress_Listings_Search_Widget extends WP_Widget {
 	function __construct() {
 		$widget_ops = array( 'classname' => 'property-search', 'description' => __( 'Display property search dropdown', 'agentpress-listings' ) );
 		$control_ops = array( 'width' => 200, 'height' => 250, 'id_base' => 'property-search' );
-		parent::_construct( 'property-search', __( 'AgentPress - Listing Search', 'agentpress-listings' ), $widget_ops, $control_ops );
+		parent::__construct( 'property-search', __( 'AgentPress - Listing Search', 'agentpress-listings' ), $widget_ops, $control_ops );
 	}
 
 	function widget( $args, $instance ) {
