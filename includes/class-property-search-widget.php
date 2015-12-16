@@ -42,8 +42,11 @@ class AgentPress_Listings_Search_Widget extends WP_Widget {
 				continue;
 
 			$current = ! empty( $wp_query->query_vars[$tax] ) ? $wp_query->query_vars[$tax] : '';
+
+			$taxonomy_name = $this->get_translated_taxonomy_label( $tax );
+
 			echo "<select name='$tax' id='$tax' class='agentpress-taxonomy'>\n\t";
-			echo '<option value="" ' . selected( $current == '', true, false ) . ">{$data['labels']['name']}</option>\n";
+			echo '<option value="" ' . selected( $current == '', true, false ) . ">$taxonomy_name</option>\n";
 			foreach ( (array) $terms as $term )
 				echo "\t<option value='{$term->slug}' " . selected( $current, $term->slug, false ) . ">{$term->name}</option>\n";
 
@@ -92,4 +95,29 @@ class AgentPress_Listings_Search_Widget extends WP_Widget {
 		
 		printf( '<p><label for="%s">%s</label><input type="text" id="%s" name="%s" value="%s" style="%s" /></p>', $this->get_field_id( 'button_text' ), __( 'Button Text:', 'agentpress-listings' ), $this->get_field_id( 'button_text' ), $this->get_field_name( 'button_text' ), esc_attr( $instance['button_text'] ), 'width: 95%;' );
 	}
+
+	function get_translated_taxonomy_label( $tax ) {
+
+		$taxonomy_name = false;
+		$taxonomy      = get_taxonomy( $tax );
+
+		// Look for labels in WPML → Taxonomy Translation first
+		if ( class_exists( 'WPML_ST_Label_Translation' ) ) {
+			$wpml_st_label_menu = new WPML_ST_Label_Translation();
+			$labels             = $wpml_st_label_menu->get_label_translations( false, $taxonomy->rewrite['slug'] );
+			$cur_lang           = apply_filters( 'wpml_current_language', '' );
+
+			if ( isset( $labels[ $cur_lang ] ) && isset( $labels[ $cur_lang ]['general'] ) ) {
+				$taxonomy_name = $labels[ $cur_lang ]['general'];
+			}
+		}
+
+		// Fall back to the standard taxonomy label if no translation exists
+		if ( ! $taxonomy_name ) {
+			$taxonomy_name = $taxonomy->labels->name;
+		}
+
+		return $taxonomy_name;
+	}
+
 }
