@@ -144,13 +144,28 @@ class AgentPress_Taxonomies {
 	function delete_taxonomy( $id = '' ) {
 
 		/**** VERIFY THE NONCE ****/
-
-		/** No empty ID */
-		if ( ! isset( $id ) || empty( $id ) )
-			wp_die( __( "Nice try, partner. But that taxonomy doesn't exist. Click back and try again.", 'agentpress-listings' ) );
-
+		
 		$options = get_option( $this->settings_field );
 
+		/** Remove any IDs that were somehow made or left blank */
+		if ( ! isset( $id ) || empty( $id ) ){
+			
+			$opts = array();
+			
+			foreach( $options as $key => $value ){
+				
+				if( ! empty( $key ) ){
+					
+					$opts[$key] = $value;
+					
+				}
+				
+			}
+			
+			update_option( $this->settings_field, $opts );
+			
+		}
+		
 		/** Look for the ID, delete if it exists */
 		if ( array_key_exists( $id, (array) $options ) ) {
 			unset( $options[$id] );
@@ -177,6 +192,8 @@ class AgentPress_Taxonomies {
 			wp_die( __( 'Please complete all required fields.', 'agentpress-listings' ) );
 		if ( ! isset( $args['singular_name'] ) || empty( $args['singular_name'] ) )
 			wp_die( __( 'Please complete all required fields.', 'agentpress-listings' ) );
+			
+		$id = $args['id'];
 
 		$labels = array(
 			'name'                  => strip_tags( $args['name'] ),

@@ -8,10 +8,10 @@
  */
 class AgentPress_Featured_Listings_Widget extends WP_Widget {
 
-	function AgentPress_Featured_Listings_Widget() {
+	function __construct() {
 		$widget_ops = array( 'classname' => 'featured-listings', 'description' => __( 'Display grid-style featured listings', 'agentpress-listings' ) );
 		$control_ops = array( 'width' => 300, 'height' => 350 );
-		$this->WP_Widget( 'featured-listings', __( 'AgentPress - Featured Listings', 'agentpress-listings' ), $widget_ops, $control_ops );
+		parent::__construct( 'featured-listings', __( 'AgentPress - Featured Listings', 'agentpress-listings' ), $widget_ops, $control_ops );
 	}
 
 	function widget( $args, $instance ) {

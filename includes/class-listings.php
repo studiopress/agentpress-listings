@@ -12,7 +12,7 @@ class AgentPress_Listings {
 
 	public $settings_field = 'agentpress_taxonomies';
 	public $menu_page = 'register-taxonomies';
-	
+
 	/**
 	 * Property details array.
 	 */
@@ -22,21 +22,21 @@ class AgentPress_Listings {
 	 * Construct Method.
 	 */
 	function __construct() {
-		
+
 		$this->property_details = apply_filters( 'agentpress_property_details', array(
-			'col1' => array( 
-			    __( 'Price:', 'agentpress-listings' )   => '_listing_price', 
-			    __( 'Address:', 'agentpress-listings' ) => '_listing_address', 
-			    __( 'City:', 'agentpress-listings' )    => '_listing_city', 
-			    __( 'State:', 'agentpress-listings' )   => '_listing_state', 
-			    __( 'ZIP:', 'agentpress-listings' )     => '_listing_zip' 
-			), 
-			'col2' => array( 
-			    __( 'MLS #:', 'agentpress-listings' )       => '_listing_mls', 
-			    __( 'Square Feet:', 'agentpress-listings' ) => '_listing_sqft', 
-			    __( 'Bedrooms:', 'agentpress-listings' )    => '_listing_bedrooms', 
-			    __( 'Bathrooms:', 'agentpress-listings' )   => '_listing_bathrooms', 
-			    __( 'Basement:', 'agentpress-listings' )    => '_listing_basement' 
+			'col1' => array(
+			    __( 'Price:', 'agentpress-listings' )   => '_listing_price',
+			    __( 'Address:', 'agentpress-listings' ) => '_listing_address',
+			    __( 'City:', 'agentpress-listings' )    => '_listing_city',
+			    __( 'State:', 'agentpress-listings' )   => '_listing_state',
+			    __( 'ZIP:', 'agentpress-listings' )     => '_listing_zip'
+			),
+			'col2' => array(
+			    __( 'MLS #:', 'agentpress-listings' )       => '_listing_mls',
+			    __( 'Square Feet:', 'agentpress-listings' ) => '_listing_sqft',
+			    __( 'Bedrooms:', 'agentpress-listings' )    => '_listing_bedrooms',
+			    __( 'Bathrooms:', 'agentpress-listings' )   => '_listing_bathrooms',
+			    __( 'Basement:', 'agentpress-listings' )    => '_listing_basement'
 			)
 		) );
 
@@ -213,11 +213,11 @@ class AgentPress_Listings {
 
 		$output .= '<div class="property-details-col1 one-half first">';
 			foreach ( (array) $this->property_details['col1'] as $label => $key ) {
-				$output .= sprintf( '<b>%s</b> %s<br />', esc_html( $label ), esc_html( get_post_meta($post->ID, $key, true) ) );	
+				$output .= sprintf( '<b>%s</b> %s<br />', esc_html( $label ), esc_html( get_post_meta($post->ID, $key, true) ) );
 			}
 		$output .= '</div><div class="property-details-col2 one-half">';
 			foreach ( (array) $this->property_details['col2'] as $label => $key ) {
-				$output .= sprintf( '<b>%s</b> %s<br />', esc_html( $label ), esc_html( get_post_meta($post->ID, $key, true) ) );	
+				$output .= sprintf( '<b>%s</b> %s<br />', esc_html( $label ), esc_html( get_post_meta($post->ID, $key, true) ) );
 			}
 		$output .= '</div><div class="clear">';
 			$output .= sprintf( '<p><b>%s</b><br /> %s</p></div>', __( 'Additional Features:', 'agentpress-listings' ), get_the_term_list( $post->ID, 'features', '', ', ', '' ) );
@@ -256,7 +256,7 @@ class AgentPress_Listings {
 
 		$listing_template = locate_template( array( 'archive-listing.php' ), false );
 
-		return $listing_template ? $listing_template : $template;	
+		return $listing_template ? $listing_template : $template;
 
 	}
 

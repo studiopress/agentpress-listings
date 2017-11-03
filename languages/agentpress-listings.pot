@@ -1,0 +1,379 @@
+# Copyright (C) 2015 StudioPress
+# This file is distributed under the GNU General Public License v2.0 (or later).
+msgid ""
+msgstr ""
+"Project-Id-Version: AgentPress Listings 1.2.6\n"
+"Report-Msgid-Bugs-To: StudioPress <translations@studiopress.com>\n"
+"POT-Creation-Date: 2015-10-12 02:19:49+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
+"Last-Translator: StudioPress <translations@studiopress.com>\n"
+"Language-Team: English <translations@studiopress.com>\n"
+"X-Generator: grunt-wp-i18n 0.4.4\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED STATES\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
+"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes\n"
+
+#: includes/class-featured-listings-widget.php:12
+msgid "Display grid-style featured listings"
+msgstr ""
+
+#: includes/class-featured-listings-widget.php:14
+msgid "AgentPress - Featured Listings"
+msgstr ""
+
+#: includes/class-featured-listings-widget.php:91
+#: includes/class-listings.php:79 includes/class-listings.php:80
+msgid "View Listing"
+msgstr ""
+
+#: includes/class-featured-listings-widget.php:116
+#: includes/class-property-search-widget.php:77
+msgid "Title:"
+msgstr ""
+
+#: includes/class-featured-listings-widget.php:118
+msgid "How many results should be returned?"
+msgstr ""
+
+#: includes/class-listings.php:28
+msgid "Price:"
+msgstr ""
+
+#: includes/class-listings.php:29
+msgid "Address:"
+msgstr ""
+
+#: includes/class-listings.php:30
+msgid "City:"
+msgstr ""
+
+#: includes/class-listings.php:31
+msgid "State:"
+msgstr ""
+
+#: includes/class-listings.php:32
+msgid "ZIP:"
+msgstr ""
+
+#: includes/class-listings.php:35
+msgid "MLS #:"
+msgstr ""
+
+#: includes/class-listings.php:36
+msgid "Square Feet:"
+msgstr ""
+
+#: includes/class-listings.php:37
+msgid "Bedrooms:"
+msgstr ""
+
+#: includes/class-listings.php:38
+msgid "Bathrooms:"
+msgstr ""
+
+#: includes/class-listings.php:39
+msgid "Basement:"
+msgstr ""
+
+#: includes/class-listings.php:72
+msgid "Listings"
+msgstr ""
+
+#: includes/class-listings.php:73
+msgid "Listing"
+msgstr ""
+
+#: includes/class-listings.php:74
+msgid "Add New"
+msgstr ""
+
+#: includes/class-listings.php:75
+msgid "Add New Listing"
+msgstr ""
+
+#: includes/class-listings.php:76 includes/views/create-tax.php:50
+msgid "Edit"
+msgstr ""
+
+#: includes/class-listings.php:77
+msgid "Edit Listing"
+msgstr ""
+
+#: includes/class-listings.php:78
+msgid "New Listing"
+msgstr ""
+
+#: includes/class-listings.php:81
+msgid "Search Listings"
+msgstr ""
+
+#: includes/class-listings.php:82
+msgid "No listings found"
+msgstr ""
+
+#: includes/class-listings.php:83
+msgid "No listings found in Trash"
+msgstr ""
+
+#: includes/class-listings.php:101
+msgid "Property Details"
+msgstr ""
+
+#: includes/class-listings.php:164
+msgid "Thumbnail"
+msgstr ""
+
+#: includes/class-listings.php:165
+msgid "Listing Title"
+msgstr ""
+
+#: includes/class-listings.php:166
+msgid "Details"
+msgstr ""
+
+#: includes/class-listings.php:167
+msgid "Features"
+msgstr ""
+
+#: includes/class-listings.php:168
+msgid "Categories"
+msgstr ""
+
+#: includes/class-listings.php:223
+msgid "Additional Features:"
+msgstr ""
+
+#: includes/class-listings.php:273
+msgid "Listing Search Results"
+msgstr ""
+
+#: includes/class-property-search-widget.php:12
+msgid "Display property search dropdown"
+msgstr ""
+
+#: includes/class-property-search-widget.php:14
+msgid "AgentPress - Listing Search"
+msgstr ""
+
+#: includes/class-property-search-widget.php:21
+#: includes/class-property-search-widget.php:69
+msgid "Search Properties"
+msgstr ""
+
+#: includes/class-property-search-widget.php:79
+msgid "Include these taxonomies in the search widget"
+msgstr ""
+
+#: includes/class-property-search-widget.php:93
+msgid "Button Text:"
+msgstr ""
+
+#: includes/class-taxonomies.php:39
+msgid "Register Taxonomies"
+msgstr ""
+
+#: includes/class-taxonomies.php:87 includes/class-taxonomies.php:90
+#: includes/class-taxonomies.php:93 includes/class-taxonomies.php:190
+#: includes/class-taxonomies.php:192 includes/class-taxonomies.php:194
+msgid "Please complete all required fields."
+msgstr ""
+
+#: includes/class-taxonomies.php:101
+msgid "You have given this taxonomy an invalid slug/ID. Please try again."
+msgstr ""
+
+#: includes/class-taxonomies.php:109 includes/class-taxonomies.php:203
+#: includes/class-taxonomies.php:274
+msgid "Search %s"
+msgstr ""
+
+#: includes/class-taxonomies.php:110 includes/class-taxonomies.php:204
+#: includes/class-taxonomies.php:275
+msgid "Popular %s"
+msgstr ""
+
+#: includes/class-taxonomies.php:111 includes/class-taxonomies.php:205
+#: includes/class-taxonomies.php:276
+msgid "All %s"
+msgstr ""
+
+#: includes/class-taxonomies.php:112 includes/class-taxonomies.php:206
+#: includes/class-taxonomies.php:277
+msgid "Edit %s"
+msgstr ""
+
+#: includes/class-taxonomies.php:113 includes/class-taxonomies.php:207
+#: includes/class-taxonomies.php:278
+msgid "Update %s"
+msgstr ""
+
+#: includes/class-taxonomies.php:114 includes/class-taxonomies.php:208
+#: includes/class-taxonomies.php:279
+msgid "Add New %s"
+msgstr ""
+
+#: includes/class-taxonomies.php:115 includes/class-taxonomies.php:209
+#: includes/class-taxonomies.php:280
+msgid "New %s Name"
+msgstr ""
+
+#: includes/class-taxonomies.php:116 includes/class-taxonomies.php:210
+#: includes/class-taxonomies.php:281
+msgid "Add or Remove %s"
+msgstr ""
+
+#: includes/class-taxonomies.php:117 includes/class-taxonomies.php:211
+#: includes/class-taxonomies.php:282
+msgid "Choose from the most used %s"
+msgstr ""
+
+#: includes/class-taxonomies.php:173
+msgid ""
+"Nice try, partner. But that taxonomy doesn't exist. Click back and try "
+"again."
+msgstr ""
+
+#: includes/class-taxonomies.php:241
+msgid "New taxonomy successfully created!"
+msgstr ""
+
+#: includes/class-taxonomies.php:246
+msgid "Taxonomy successfully edited!"
+msgstr ""
+
+#: includes/class-taxonomies.php:251
+msgid "Taxonomy successfully deleted."
+msgstr ""
+
+#: includes/views/create-tax.php:2
+msgid "Listing Taxonomies"
+msgstr ""
+
+#: includes/views/create-tax.php:11
+msgid "Current Listing Taxonomies"
+msgstr ""
+
+#: includes/views/create-tax.php:15 includes/views/create-tax.php:23
+#: includes/views/create-tax.php:78 includes/views/edit-tax.php:19
+msgid "ID"
+msgstr ""
+
+#: includes/views/create-tax.php:16 includes/views/create-tax.php:24
+#: includes/views/create-tax.php:90 includes/views/edit-tax.php:33
+msgid "Singular Name"
+msgstr ""
+
+#: includes/views/create-tax.php:17 includes/views/create-tax.php:25
+#: includes/views/create-tax.php:84 includes/views/edit-tax.php:27
+msgid "Plural Name"
+msgstr ""
+
+#: includes/views/create-tax.php:51
+msgid "Delete"
+msgstr ""
+
+#: includes/views/create-tax.php:72
+msgid "Add New Listing Taxonomy"
+msgstr ""
+
+#: includes/views/create-tax.php:80
+msgid ""
+"The unique ID is used to register the taxonomy.<br />(no spaces, "
+"underscores, or special characters)"
+msgstr ""
+
+#: includes/views/create-tax.php:86 includes/views/edit-tax.php:29
+msgid "Example: \"Property Types\" or \"Locations\""
+msgstr ""
+
+#: includes/views/create-tax.php:92 includes/views/edit-tax.php:35
+msgid "Example: \"Property Type\" or \"Location\""
+msgstr ""
+
+#: includes/views/create-tax.php:95
+msgid "Add New Taxonomy"
+msgstr ""
+
+#: includes/views/edit-tax.php:7
+msgid ""
+"Nice try, partner. But that taxonomy doesn't exist or can't be edited. "
+"Click back and try again."
+msgstr ""
+
+#: includes/views/edit-tax.php:12
+msgid "Edit Taxonomy"
+msgstr ""
+
+#: includes/views/edit-tax.php:23
+msgid "The unique ID is used to register the taxonomy. (cannot be changed)"
+msgstr ""
+
+#: includes/views/edit-tax.php:40
+msgid "Update"
+msgstr ""
+
+#: includes/views/listing-details-metabox.php:6
+msgid "Custom Text: "
+msgstr ""
+
+#: includes/views/listing-details-metabox.php:7
+msgid "Custom text shows on the featured listings widget image."
+msgstr ""
+
+#: includes/views/listing-details-metabox.php:18
+#: includes/views/listing-details-metabox.php:34
+#: includes/views/listing-details-metabox.php:42
+msgid "Send to text editor"
+msgstr ""
+
+#: includes/views/listing-details-metabox.php:32
+msgid ""
+"<p><label>Enter Map Embed Code:<br /><textarea name=\"ap[_listing_map]\" "
+"rows=\"5\" cols=\"18\" style=\"%s\">%s</textarea></label></p>"
+msgstr ""
+
+#: includes/views/listing-details-metabox.php:40
+msgid ""
+"<p><label>Enter Video Embed Code:<br /><textarea "
+"name=\"ap[_listing_video]\" rows=\"5\" cols=\"18\" "
+"style=\"%s\">%s</textarea></label></p>"
+msgstr ""
+
+#: plugin.php:33
+msgid ""
+"Sorry, you can't activate unless you have installed <a "
+"href=\"%s\">Genesis</a>"
+msgstr ""
+
+#: plugin.php:41
+msgid "Sorry, you cannot activate without <a href=\"%s\">Genesis %s</a> or greater"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "AgentPress Listings"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.studiopress.com/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"AgentPress Listings is a plugin which adds a Listings custom post type for "
+"Real Estate agents."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "StudioPress"
+msgstr ""
