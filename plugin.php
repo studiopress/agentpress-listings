@@ -6,7 +6,7 @@ Description: AgentPress Listings is a plugin which adds a Listings custom post t
 Author: StudioPress
 Author URI: http://www.studiopress.com/
 
-Version: 1.2.6
+Version: 1.2.7
 
 Text Domain: agentpress-listings
 Domain Path: /languages/
@@ -107,4 +107,3 @@ function agentpress_register_widgets() {
 	}
 
 }
-
