@@ -18,8 +18,19 @@ $pattern = '<p><label>%s<br /><input type="text" name="ap[%s]" value="%s" /></la
 
 echo '<div style="width: 45%; float: left">';
 
+$allowed_tags = array(
+	'p'     => array(),
+	'label' => array(),
+	'br'    => array(),
+	'input' => array(
+		'type'  => array(),
+		'name'  => array(),
+		'value' => array(),
+	),
+);
+
 foreach ( (array) $this->property_details['col1'] as $label => $key ) {
-	printf( wp_kses_post( $pattern ), esc_html( $label ), esc_attr( $key ), esc_attr( genesis_get_custom_field( $key ) ) );
+	printf( wp_kses( $pattern, $allowed_tags ), esc_html( $label ), esc_attr( $key ), esc_attr( genesis_get_custom_field( $key ) ) );
 }
 	printf( '<p><a class="button" href="%s" onclick="%s">%s</a></p>', '#', 'ap_send_to_editor(\'[property_details]\')', esc_html__( 'Send to text editor', 'agentpress-listings' ) );
 
@@ -28,7 +39,7 @@ echo '</div>';
 echo '<div style="width: 45%; float: left;">';
 
 foreach ( (array) $this->property_details['col2'] as $label => $key ) {
-	printf( wp_kses_post( $pattern ), esc_html( $label ), esc_attr( $key ), esc_attr( genesis_get_custom_field( $key ) ) );
+	printf( wp_kses( $pattern, $allowed_tags ), esc_html( $label ), esc_attr( $key ), esc_attr( genesis_get_custom_field( $key ) ) );
 }
 
 echo '</div><br style="clear: both;" /><br /><br />';

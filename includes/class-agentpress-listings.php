@@ -169,7 +169,7 @@ class AgentPress_Listings {
 			return;
 		}
 
-		$property_details = sanitize_text_field( wp_unslash( $_POST['ap'] ) );
+		$property_details = array_map( 'sanitize_text_field', wp_unslash( $_POST['ap'] ) );
 
 		/** Store the custom fields */
 		foreach ( (array) $property_details as $key => $value ) {
