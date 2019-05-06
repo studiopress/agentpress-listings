@@ -53,6 +53,7 @@ class AgentPress_Listings_Search_Widget extends WP_Widget {
 		$listings_taxonomies = $_agentpress_taxonomies->get_taxonomies();
 
 		$before_widget = $args['before_widget'];
+		$after_widget  = $args['after_widget'];
 		$before_title  = $args['before_title'];
 		$after_title   = $args['after_title'];
 

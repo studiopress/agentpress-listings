@@ -221,9 +221,21 @@ class AgentPress_Listings {
 
 		global $post, $wp_taxonomies;
 
+		$allowed_tags = array(
+			'img' => array(
+				'width'  => array(),
+				'height' => array(),
+				'src'    => array(),
+				'class'  => array(),
+				'alt'    => array(),
+				'srcset' => array(),
+				'sizes'  => array(),
+			),
+		);
+
 		switch ( $column ) {
 			case 'listing_thumbnail':
-				printf( '<p>%s</p>', esc_html( genesis_get_image( array( 'size' => 'thumbnail' ) ) ) );
+				printf( '<p>%s</p>', wp_kses( genesis_get_image( array( 'size' => 'thumbnail' ) ), $allowed_tags ) );
 				break;
 			case 'listing_details':
 				foreach ( (array) $this->property_details['col1'] as $label => $key ) {

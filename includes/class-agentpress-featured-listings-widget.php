@@ -66,7 +66,7 @@ class AgentPress_Featured_Listings_Widget extends WP_Widget {
 				'paged'          => get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1,
 			);
 
-			$query = WP_Query( $query_args );
+			$query = new WP_Query( $query_args );
 
 			if ( $query->have_posts() ) :
 				while ( $query->have_posts() ) :
