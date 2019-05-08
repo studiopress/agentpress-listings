@@ -49,8 +49,9 @@ class AgentPress_Featured_Listings_Widget extends WP_Widget {
 		);
 
 		$before_widget = $args['before_widget'];
-		$after_title   = $args['after_title'];
 		$after_widget  = $args['after_widget'];
+		$before_title  = $args['before_title'];
+		$after_title   = $args['after_title'];
 
 		echo wp_kses_post( $before_widget );
 
@@ -124,7 +125,7 @@ class AgentPress_Featured_Listings_Widget extends WP_Widget {
 					$toggle = ( 'left' === $toggle ) ? 'right' : 'left';
 
 					// Wrap in post class div, and output.
-					printf( '<div class="%s"><div class="widget-wrap"><div class="listing-wrap">%s</div></div></div>', wp_kses_post( join( ' ', get_post_class( $toggle ) ), apply_filters( 'agentpress_featured_listings_widget_loop', $loop ) ) );
+					printf( '<div class="%s"><div class="widget-wrap"><div class="listing-wrap">%s</div></div></div>', wp_kses_post( join( ' ', get_post_class( $toggle ) ) ), wp_kses_post( apply_filters( 'agentpress_featured_listings_widget_loop', $loop ) ) );
 
 			endwhile;
 		endif;
