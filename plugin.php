@@ -6,7 +6,7 @@
  * Author: StudioPress
  * Author URI: https://www.studiopress.com/
  *
- * Version: 1.3.0
+ * Version: 1.3.1
  *
  * Text Domain: agentpress-listings
  * Domain Path: /languages/
