@@ -61,7 +61,7 @@
 						<br />
 
 						<div class="row-actions">
-							<span class="edit"><a href="<?php echo esc_url( admin_url( 'admin.php?page=' . $this->menu_page . '&amp;view=edit&amp;id=' . esc_html( $id ) ) ); ?>"><?php esc_html_e( 'Edit', 'agentpress-listings' ); ?></a> | </span>
+							<span class="edit"><a href="<?php echo esc_url( admin_url( 'admin.php?page=' . $this->menu_page . '&amp;view=edit&amp;id=' . esc_html( $tax_id ) ) ); ?>"><?php esc_html_e( 'Edit', 'agentpress-listings' ); ?></a> | </span>
 							<span class="delete"><a class="delete-tag" href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin.php?page=' . $this->menu_page . '&amp;action=delete&amp;id=' . esc_html( $tax_id ) ) ), 'agentpress-action_delete-taxonomy' ); ?>"><?php esc_html_e( 'Delete', 'agentpress-listings' ); ?></a></span>
 						</div>
 					<?php endif; ?>
