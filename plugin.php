@@ -6,7 +6,7 @@
  * Author: StudioPress
  * Author URI: https://www.studiopress.com/
  *
- * Version: 1.3.0
+ * Version: 1.3.1
  *
  * Text Domain: agentpress-listings
  * Domain Path: /languages/
@@ -105,7 +105,7 @@ function agentpress_listings_init() {
 	global $_agentpress_listings, $_agentpress_taxonomies;
 
 	define( 'APL_URL', plugin_dir_url( __FILE__ ) );
-	define( 'APL_VERSION', '1.2.6' );
+	define( 'APL_VERSION', '1.3.1' );
 
 	/** Load textdomain for translation */
 	load_plugin_textdomain( 'agentpress-listings', false, basename( dirname( __FILE__ ) ) . '/languages/' );
