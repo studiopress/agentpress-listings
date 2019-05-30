@@ -33,6 +33,13 @@ class AgentPress_Listings {
 	public $property_details;
 
 	/**
+	 * Allowed tags.
+	 *
+	 * @var array
+	 */
+	public $allowed_tags;
+
+	/**
 	 * Construct Method.
 	 */
 	public function __construct() {
@@ -53,6 +60,45 @@ class AgentPress_Listings {
 					__( 'Bedrooms:', 'agentpress-listings' ) => '_listing_bedrooms',
 					__( 'Bathrooms:', 'agentpress-listings' ) => '_listing_bathrooms',
 					__( 'Basement:', 'agentpress-listings' ) => '_listing_basement',
+				),
+			)
+		);
+
+		$this->allowed_tags = apply_filters(
+			'agentpress_featured_listings_allowed_html',
+			array(
+				'p'      => array(),
+				'label'  => array(),
+				'br'     => array(),
+				'input'  => array(
+					'type'  => array(),
+					'name'  => array(),
+					'value' => array(),
+				),
+				'iframe' => array(
+					'allow'           => array(),
+					'allowfullscreen' => array(),
+					'csp'             => array(),
+					'height'          => array(),
+					'importance'      => array(),
+					'name'            => array(),
+					'referrerpolicy'  => array(),
+					'sandbox'         => array(),
+					'src'             => array(),
+					'srcdoc'          => array(),
+					'width'           => array(),
+					'align'           => array(),
+					'frameborder'     => array(),
+					'longdes'         => array(),
+					'marginheight'    => array(),
+					'marginwidth'     => array(),
+					'scrolling'       => array(),
+					'class'           => array(),
+					'id'              => array(),
+					'style'           => array(),
+					'title'           => array(),
+					'role'            => array(),
+					'data-*'          => array(),
 				),
 			)
 		);
@@ -169,10 +215,10 @@ class AgentPress_Listings {
 			return;
 		}
 
-		$property_details = array_map( 'sanitize_text_field', wp_unslash( $_POST['ap'] ) );
+		$property_details = array_map( 'wp_kses', [ wp_unslash( $_POST['ap'] ) ], [ $this->allowed_tags ] );
 
 		/** Store the custom fields */
-		foreach ( (array) $property_details as $key => $value ) {
+		foreach ( (array) $property_details[0] as $key => $value ) {
 
 			/** Save/Update/Delete */
 			if ( $value ) {
