@@ -215,7 +215,8 @@ class AgentPress_Listings {
 			return;
 		}
 
-		$property_details = array_map( 'wp_kses', [ wp_unslash( $_POST['ap'] ) ], [ $this->allowed_tags ] );
+		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		$property_details = array_map( 'wp_kses', array( wp_unslash( $_POST['ap'] ) ), [ $this->allowed_tags ] );
 
 		/** Store the custom fields */
 		foreach ( (array) $property_details[0] as $key => $value ) {
@@ -285,10 +286,10 @@ class AgentPress_Listings {
 				break;
 			case 'listing_details':
 				foreach ( (array) $this->property_details['col1'] as $label => $key ) {
-					printf( '<b>%s</b> %s<br />', esc_html( $label ), esc_html( get_post_meta( $post->ID, $key, true ) ) );
+					printf( '<b>%s</b> %s<br />', esc_html( $label ), wp_kses( get_post_meta( $post->ID, $key, true ), $this->allowed_tags ) );
 				}
 				foreach ( (array) $this->property_details['col2'] as $label => $key ) {
-					printf( '<b>%s</b> %s<br />', esc_html( $label ), esc_html( get_post_meta( $post->ID, $key, true ) ) );
+					printf( '<b>%s</b> %s<br />', esc_html( $label ), wp_kses( get_post_meta( $post->ID, $key, true ), $this->allowed_tags ) );
 				}
 				break;
 			case 'listing_features':
@@ -319,13 +320,13 @@ class AgentPress_Listings {
 		$output .= '<div class="property-details-col1 one-half first">';
 
 		foreach ( (array) $this->property_details['col1'] as $label => $key ) {
-			$output .= sprintf( '<b>%s</b> %s<br />', esc_html( $label ), esc_html( get_post_meta( $post->ID, $key, true ) ) );
+			$output .= sprintf( '<b>%s</b> %s<br />', esc_html( $label ), wp_kses( get_post_meta( $post->ID, $key, true ), $this->allowed_tags ) );
 		}
 
 		$output .= '</div><div class="property-details-col2 one-half">';
 
 		foreach ( (array) $this->property_details['col2'] as $label => $key ) {
-			$output .= sprintf( '<b>%s</b> %s<br />', esc_html( $label ), esc_html( get_post_meta( $post->ID, $key, true ) ) );
+			$output .= sprintf( '<b>%s</b> %s<br />', esc_html( $label ), wp_kses( get_post_meta( $post->ID, $key, true ), $this->allowed_tags ) );
 		}
 
 		$output .= '</div><div class="clear">';
