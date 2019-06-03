@@ -216,7 +216,7 @@ class AgentPress_Listings {
 		}
 
 		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-		$property_details = array_map( 'wp_kses', array( wp_unslash( $_POST['ap'] ) ), [ $this->allowed_tags ] );
+		$property_details = array_map( 'wp_kses', array( wp_unslash( $_POST['ap'] ) ), array( $this->allowed_tags ) );
 
 		/** Store the custom fields */
 		foreach ( (array) $property_details[0] as $key => $value ) {
