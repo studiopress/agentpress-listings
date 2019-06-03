@@ -18,19 +18,8 @@ $pattern = '<p><label>%s<br /><input type="text" name="ap[%s]" value="%s" /></la
 
 echo '<div style="width: 45%; float: left">';
 
-$allowed_tags = array(
-	'p'     => array(),
-	'label' => array(),
-	'br'    => array(),
-	'input' => array(
-		'type'  => array(),
-		'name'  => array(),
-		'value' => array(),
-	),
-);
-
 foreach ( (array) $this->property_details['col1'] as $label => $key ) {
-	printf( wp_kses( $pattern, $allowed_tags ), esc_html( $label ), esc_attr( $key ), esc_attr( genesis_get_custom_field( $key ) ) );
+	printf( wp_kses( $pattern, $this->allowed_tags ), esc_html( $label ), esc_attr( $key ), esc_attr( genesis_get_custom_field( $key ) ) );
 }
 	printf( '<p><a class="button" href="%s" onclick="%s">%s</a></p>', '#', 'ap_send_to_editor(\'[property_details]\')', esc_html__( 'Send to text editor', 'agentpress-listings' ) );
 
@@ -39,14 +28,14 @@ echo '</div>';
 echo '<div style="width: 45%; float: left;">';
 
 foreach ( (array) $this->property_details['col2'] as $label => $key ) {
-	printf( wp_kses( $pattern, $allowed_tags ), esc_html( $label ), esc_attr( $key ), esc_attr( genesis_get_custom_field( $key ) ) );
+	printf( wp_kses( $pattern, $this->allowed_tags ), esc_html( $label ), esc_attr( $key ), esc_attr( genesis_get_custom_field( $key ) ) );
 }
 
 echo '</div><br style="clear: both;" /><br /><br />';
 
 echo '<div style="width: 45%; float: left;">';
 
-printf( '<p><label>%1$s<br /><textarea name="ap[_listing_map]" rows="5" cols="18" style="%2$s">%3$s</textarea></label></p>', esc_html__( 'Enter Map Embed Code:', 'agentpress-listings' ), 'width: 99%;', wp_kses_post( genesis_get_custom_field( '_listing_map' ) ) );
+printf( '<p><label>%1$s<br /><textarea name="ap[_listing_map]" rows="5" cols="18" style="%2$s">%3$s</textarea></label></p>', esc_html__( 'Enter Map Embed Code:', 'agentpress-listings' ), 'width: 99%;', wp_kses( genesis_get_custom_field( '_listing_map' ), $this->allowed_tags ) );
 
 printf( '<p><a class="button" href="%s" onclick="%s">%s</a></p>', '#', 'ap_send_to_editor(\'[property_map]\')', esc_html__( 'Send to text editor', 'agentpress-listings' ) );
 
@@ -54,7 +43,7 @@ echo '</div>';
 
 echo '<div style="width: 45%; float: left;">';
 
-printf( '<p><label>%1$s:<br /><textarea name="ap[_listing_video]" rows="5" cols="18" style="%2$s">%3$s</textarea></label></p>', esc_html__( 'Enter Video Embed Code', 'agentpress-listings' ), 'width: 99%;', wp_kses_post( genesis_get_custom_field( '_listing_video' ) ) );
+printf( '<p><label>%1$s:<br /><textarea name="ap[_listing_video]" rows="5" cols="18" style="%2$s">%3$s</textarea></label></p>', esc_html__( 'Enter Video Embed Code', 'agentpress-listings' ), 'width: 99%;', wp_kses( genesis_get_custom_field( '_listing_video' ), $this->allowed_tags ) );
 
 printf( '<p><a class="button" href="%s" onclick="%s">%s</a></p>', '#', 'ap_send_to_editor(\'[property_video]\')', esc_html__( 'Send to text editor', 'agentpress-listings' ) );
 
