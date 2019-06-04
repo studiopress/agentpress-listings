@@ -25,7 +25,7 @@ You can use the taxonomy creation tool to create your own way of classifying lis
 No, but that doesn't necessarily mean it's perfect. Please report any bugs to us, and be sure to update whenever a new version is available.
 
 = Is there a way to add more HTML tags accepted for the map and video textarea? =
-Yes, you can the filter agentpress_featured_listings_allowed_html.
+Yes, you can use the filter agentpress_featured_listings_allowed_html.
 
 
 
