@@ -28,10 +28,10 @@
     "uri": "https://github.com/copyblogger/agentpress-listings",
     "description": "AgentPress Listings is a plugin which adds a Listings custom post type for Real Estate agents.",
     "author": "StudioPress",
-    "authoruri": "http://www.studiopress.com/",
-    "version": "1.3.2",
-    "license": "GPL-2.0+",
-    "licenseuri": "http://www.gnu.org/licenses/gpl-2.0.html",
+    "authoruri": "https://www.studiopress.com/",
+    "version": "1.3.3",
+    "license": "GPL-2.0-or-later",
+    "licenseuri": "https://www.gnu.org/licenses/gpl-2.0.html",
     "textdomain": "agentpress-listings"
   }
 }
