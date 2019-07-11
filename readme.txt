@@ -31,6 +31,9 @@ Yes, you can use the filter agentpress_featured_listings_allowed_html.
 
 == Changelog ==
 
+= 1.3.3 =
+* Prevent `_listing_price_sortable` meta being removed when creating new listings or saving existing ones. If listings disappeared from your archives and search results after editing them, try updating the plugin and then resaving them.
+
 = 1.3.2 =
 * Fix a bug where map and video textarea were stripping HTML tags from the content.
 
