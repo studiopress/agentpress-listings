@@ -241,7 +241,8 @@ class AgentPress_Listings {
 	/**
 	 * Filter the columns in the "Listings" screen, define our own.
 	 *
-	 * @param array $columns Columns.
+	 * @param array $columns Columns data.
+	 * @return array Modified columns data.
 	 */
 	public function columns_filter( $columns ) {
 
@@ -372,6 +373,7 @@ class AgentPress_Listings {
 	 * Search templates.
 	 *
 	 * @param  array $template Template.
+	 * @return string|array The template filename or the original template data.
 	 */
 	public function search_template( $template ) {
 
