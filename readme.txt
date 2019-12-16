@@ -2,7 +2,7 @@
 Contributors: nathanrice, wpmuguru, studiopress, nick_thegeek, marksabbath
 Tags: real estate, agentpress, genesis, genesiswp
 Requires at least: 4.0.0
-Tested up to: 5.2.2
+Tested up to: 5.3
 Stable tag: 1.3.4
 
 This plugin adds a Listings custom post type for Real Estate agents.
