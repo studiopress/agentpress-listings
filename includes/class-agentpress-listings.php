@@ -230,8 +230,8 @@ class AgentPress_Listings {
 		}
 
 		// Extra check for price that can create a sortable value.
-		if ( isset( $property_details[0]['_listing_price'] ) && ! empty( $property_details[0]['_listing_price'] ) ) {
-			$price_sortable = preg_replace( '/[^0-9\.]/', '', $property_details[0]['_listing_price'] );
+		if ( isset( $property_details['_listing_price'] ) && ! empty( $property_details['_listing_price'] ) ) {
+			$price_sortable = preg_replace( '/[^0-9\.]/', '', $property_details['_listing_price'] );
 			update_post_meta( $post_id, '_listing_price_sortable', floatval( $price_sortable ) );
 		} else {
 			delete_post_meta( $post_id, '_listing_price_sortable' );
