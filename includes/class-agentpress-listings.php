@@ -216,11 +216,11 @@ class AgentPress_Listings {
 		}
 
 		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-		$property_details = array_map( 'wp_kses', array( wp_unslash( $_POST['ap'] ) ), array( $this->allowed_tags ) );
+		$property_details = (array) wp_unslash( $_POST['ap'] );
+		array_walk( $property_details, array( $this, 'sanitize_detail' ) );
 
 		/** Store the custom fields */
-		foreach ( (array) $property_details[0] as $key => $value ) {
-
+		foreach ( (array) $property_details as $key => $value ) {
 			/** Save/Update/Delete */
 			if ( $value ) {
 				update_post_meta( $post->ID, $key, $value );
@@ -409,6 +409,16 @@ class AgentPress_Listings {
 
 		return $crumbs;
 
+	}
+
+	/**
+	 * Callback for `array_walk` to sanitize property details during save.
+	 *
+	 * @param string $detail The property meta data.
+	 * @param mixed  $key Key, unused.
+	 */
+	protected function sanitize_detail( &$detail, $key ) {
+		$detail = wp_kses( $detail, (array) $this->allowed_tags );
 	}
 
 }
