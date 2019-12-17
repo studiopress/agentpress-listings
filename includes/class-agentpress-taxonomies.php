@@ -325,9 +325,9 @@ class AgentPress_Taxonomies {
 	 */
 	public function property_features_taxonomy() {
 
-		$name = 'Features';
+		$name = esc_html__( 'Features', 'agentpress-listings' );
 
-		$singular_name = 'Feature';
+		$singular_name = esc_html__( 'Feature', 'agentpress-listings' );
 
 		return array(
 			'features' => array(
