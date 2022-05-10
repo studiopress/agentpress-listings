@@ -1,22 +1,17 @@
 version: 2.1
 
 orbs:
+    php: circleci/php@1.1
     wp-svn: studiopress/wp-svn@0.1
 
 jobs:
   test:
     docker:
-      - image: circleci/php:7.3.3-stretch-node-browsers
+      - image: cimg/php:7.3-node
     steps:
       - checkout
-      - prepare-environment
+      - php/install-packages
       - run: composer phpcs
-
-commands:
- prepare-environment:
-   description: "Install dependencies."
-   steps:
-     - run: composer install
 
 workflows:
   version: 2
