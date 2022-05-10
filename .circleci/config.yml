@@ -20,7 +20,7 @@ commands:
 
 workflows:
   version: 2
-  check-wp-cs:
+  test-deploy:
     jobs:
       - test
       - approval-for-deploy-tested-up-to-bump:
