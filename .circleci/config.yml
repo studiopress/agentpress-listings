@@ -5,7 +5,6 @@ orbs:
     wp-svn: studiopress/wp-svn@0.1
 
 workflows:
-  version: 2
   test-deploy:
     jobs:
       - php/test:
