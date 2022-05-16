@@ -12,7 +12,7 @@ workflows:
       - approval-for-deploy-tested-up-to-bump:
           type: approval
           requires:
-            - test
+            - php/test
           filters:
             tags:
               ignore: /.*/
